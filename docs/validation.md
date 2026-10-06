@@ -54,7 +54,14 @@ benchmark 会重写公开的 `research/results/invariants.json`；demo 目录必
 
 ## CI 与集成边界
 
-GitHub Actions配置：Windows/Linux × Python 3.10/3.12。远端结果以[实际运行记录](https://github.com/Koooki3/skill-loom/actions)为准；首次推送前仅是待执行配置。发布说明会记录对应commit和成功run。
+GitHub Actions已在提交 `b4cf24f5517c23dbc6c62df4704f4e8e1b3c017c` 完成[首次真实运行](https://github.com/Koooki3/skill-loom/actions/runs/37437734871)，四个作业全部成功。逐项查看原始作业日志确认：
+
+| CI平台 | Python | 执行结果 |
+|---|---|---|
+| Ubuntu 24.04 | 3.10、3.12 | 每项43测试通过；POSIX执行位和符号链接拒绝均实际执行 |
+| Windows hosted runner | 3.10、3.12 | 每项42测试通过、1跳过；仅POSIX执行位不适用，符号链接测试实际执行 |
+
+所有作业还通过依赖安装与发布检查。最终release的完整commit和对应CI链接写在发布说明；它们与这里的首次证据分开记录，避免用旧提交的成功代替新提交验收。
 
 当前未验证：原生Codex/Claude Code Stop-hook运行、Claude Code本地发现、多用户托管、macOS运行、任意模型任务提升、长期并发与存储故障恢复。适配指南区分官方能力、项目约定和本机观察。CLI的hook脚本、单元fixture通过不等于宿主实际调用已通过。
 
