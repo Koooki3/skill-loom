@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the release and describe the version actually evaluated."
+type: software
+title: "Skill Loom: Evidence-driven skill evolution"
+authors:
+  - name: "Skill Loom contributors"
+version: 0.1.0
+date-released: 2026-10-06
+license: MIT
+repository-code: "https://github.com/Koooki3/skill-loom"
+url: "https://github.com/Koooki3/skill-loom"

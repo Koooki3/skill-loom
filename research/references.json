@@ -1,0 +1,648 @@
+{
+  "schema_version": 1,
+  "title": "Skill Loom — primary literature reference register",
+  "language": "zh-CN",
+  "accessed": "2026-10-06",
+  "cutoff": "2026-10-06",
+  "scope": "15 primary papers; source claims are not Skill Loom experimental results.",
+  "reading_status_vocabulary": {
+    "full_text_sections_read": "已打开并阅读列出的正文方法、评价或局限章节；不表示逐页读完所有附录。",
+    "abstract_only": "仅核对摘要与元数据；本版没有以此状态纳入的论文。",
+    "unavailable": "未取得相关全文；不得用作方法或结果证据。"
+  },
+  "search_protocol": {
+    "primary_hosts": [
+      "arxiv.org",
+      "openreview.net",
+      "author-linked project repositories"
+    ],
+    "selection": "从研究问题引导的种子论文出发，再纳入直接改变评价、迁移、反馈或维护结论的近作；不声称穷尽或系统综述。",
+    "excluded_as_evidence": [
+      "第三方自动摘要",
+      "社交媒体宣传",
+      "无法固定版本的排行榜数值"
+    ],
+    "future_sources_included": false,
+    "reproduced_papers": 0
+  },
+  "sources": [
+    {
+      "label": "R01",
+      "id": "skillsbench2026",
+      "title": "SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks",
+      "author": "Xiangyi Li et al.",
+      "authors": [
+        "Xiangyi Li"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2602.12670",
+      "version": "v4",
+      "first_submitted": "2026-02-13",
+      "version_date": "2026-06-14",
+      "url": "https://arxiv.org/abs/2602.12670v4",
+      "metadata_url": "https://arxiv.org/abs/2602.12670",
+      "full_text_url": "https://arxiv.org/html/2602.12670v4",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "controlled_benchmark"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§1 Introduction",
+        "§2 Background",
+        "§3 SkillsBench",
+        "§4 Experiment",
+        "§5.1 Results",
+        "§6.1 Limitations and Future Work"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§3–4",
+        "what": "§5.1; Table 2",
+        "limits": "§6.1"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "All claims use v4; the earlier 86-task, 11-domain, seven-configuration aggregate is not combined with v4."
+    },
+    {
+      "label": "R02",
+      "id": "evoskill2026",
+      "title": "EvoSkill: Automated Skill Discovery for Multi-Agent Systems",
+      "author": "Salaheddin Alzubi et al.",
+      "authors": [
+        "Salaheddin Alzubi"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2603.02766",
+      "version": "v1",
+      "first_submitted": "2026-03-03",
+      "version_date": "2026-03-03",
+      "url": "https://arxiv.org/abs/2603.02766v1",
+      "metadata_url": "https://arxiv.org/abs/2603.02766",
+      "full_text_url": "https://arxiv.org/html/2603.02766v1",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "benchmark_experiment"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§2 Methodology",
+        "§3.1 OfficeQA",
+        "§3.2 SealQA",
+        "§3.3 Zero-Shot Skill Transfer",
+        "§5 Conclusion"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§2.1–2.3",
+        "what": "§3.1–3.3; Table 1",
+        "limits": "§3.1.3, footnote 2; Table 1 versus adjacent prose"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "The HTML Table 1 merge-unique exact-match cell reads 68.1, while the adjacent prose/caption/abstract reads 67.9; this discrepancy is retained, not silently resolved. Each configuration is a single run."
+    },
+    {
+      "label": "R03",
+      "id": "skillrl2026",
+      "title": "SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning",
+      "author": "Peng Xia et al.",
+      "authors": [
+        "Peng Xia"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2602.08234",
+      "version": "v1",
+      "first_submitted": "2026-02-09",
+      "version_date": "2026-02-09",
+      "url": "https://arxiv.org/abs/2602.08234v1",
+      "metadata_url": "https://arxiv.org/abs/2602.08234",
+      "full_text_url": "https://arxiv.org/html/2602.08234v1",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "reinforcement_learning_experiment"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§3 SkillRL",
+        "§4.1 Experimental Setup",
+        "§4 results and analysis",
+        "Tables 1–3"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§3.1–3.3; Algorithm 1",
+        "what": "§4; Tables 1–3",
+        "limits": "§3.3 and §4 (scope-based critique; no dedicated limitations section used)"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "This is a policy-training result (SFT and GRPO plus evolving skills), not evidence that copying a skill directory improves an unchanged host model."
+    },
+    {
+      "label": "R04",
+      "id": "autoskill2026",
+      "title": "AutoSkill: Experience-Driven Lifelong Learning via Skill Self-Evolution",
+      "author": "Yutao Yang et al.",
+      "authors": [
+        "Yutao Yang"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2603.01145",
+      "version": "v2",
+      "first_submitted": "2026-03-01",
+      "version_date": "2026-03-05",
+      "url": "https://arxiv.org/abs/2603.01145v2",
+      "metadata_url": "https://arxiv.org/abs/2603.01145",
+      "full_text_url": "https://arxiv.org/html/2603.01145v2",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "system",
+        "descriptive_corpus_analysis"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§3 Method",
+        "§4 System Overview",
+        "§5 Experimental Analysis",
+        "§6 Conclusions and Future Work"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§3.3–3.4; §4.3–4.7",
+        "what": "§5.1–5.3; Tables 1–2",
+        "limits": "§5–6 (scope-based critique of the reported evidence)"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "The reported study contains extraction counts, distributions and case studies; no paired downstream task-gain experiment is claimed here."
+    },
+    {
+      "label": "R05",
+      "id": "coevoskills2026",
+      "title": "CoEvoSkills: Self-Evolving Agent Skills via Co-Evolutionary Verification",
+      "author": "Hanrong Zhang et al.",
+      "authors": [
+        "Hanrong Zhang"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2604.01687",
+      "version": "v3",
+      "first_submitted": "2026-04-02",
+      "version_date": "2026-08-10",
+      "url": "https://arxiv.org/abs/2604.01687v3",
+      "metadata_url": "https://arxiv.org/abs/2604.01687",
+      "full_text_url": "https://arxiv.org/html/2604.01687v3",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "controlled_benchmark"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§3 Method",
+        "§4.1–4.3 experiments",
+        "Appendix B Evolution Iteration Analysis",
+        "Appendix C Case Study"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§3.1–3.3; Algorithm 1",
+        "what": "§4.1–4.3; Tables 1–3",
+        "limits": "Appendix B; Appendix C, The surrogate-GT gap"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "The generator does not inspect hidden oracle test content, but oracle pass/fail is used during evolution. The evaluated suite has 85 tasks, not the SkillsBench v4 aggregate."
+    },
+    {
+      "label": "R06",
+      "id": "lifecycle2026",
+      "title": "Dynamic Agent Skills: A Lifecycle Survey and Taxonomy of Evolving Skill Libraries",
+      "author": "Yubo Li",
+      "authors": [
+        "Yubo Li"
+      ],
+      "authors_complete": true,
+      "author_note": "完整单作者",
+      "year": 2026,
+      "arxiv_id": "2607.10113",
+      "version": "v1",
+      "first_submitted": "2026-07-11",
+      "version_date": "2026-07-11",
+      "url": "https://arxiv.org/abs/2607.10113v1",
+      "metadata_url": "https://arxiv.org/abs/2607.10113",
+      "full_text_url": "https://arxiv.org/html/2607.10113v1",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "survey"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§2 Corpus, Scope, and Review Protocol",
+        "§3 artifact taxonomy and editable records",
+        "§5 Dynamic Skill Systems as Lifecycle-Managed Stores",
+        "§7.2 Admission and verification are the selection mechanism",
+        "§13 Limitations and Update Policy",
+        "Appendix A coding protocol"
+      ],
+      "source_location": {
+        "why": "§1–2",
+        "how": "§2.3–2.5; §3.1–3.3; §5.1–5.3",
+        "what": "Tables 1–2; §7.2; Appendix A",
+        "limits": "§13"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "Primary identity is verified. The survey's own literature cutoff is 2026-05-31; its 124-paper audit set is not a current-October census."
+    },
+    {
+      "label": "R07",
+      "id": "gepa2025",
+      "title": "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning",
+      "author": "Lakshya A Agrawal et al.",
+      "authors": [
+        "Lakshya A Agrawal"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2025,
+      "arxiv_id": "2507.19457",
+      "version": "v2",
+      "first_submitted": "2025-07-25",
+      "version_date": "2026-02-14",
+      "url": "https://arxiv.org/abs/2507.19457v2",
+      "metadata_url": "https://arxiv.org/abs/2507.19457",
+      "full_text_url": "https://arxiv.org/pdf/2507.19457v2",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "controlled_benchmark"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§2 Problem Statement, PDF pp. 2–4",
+        "§3 Reflective Prompt Evolution, PDF pp. 4–5",
+        "§4 Evaluation, PDF pp. 8–10"
+      ],
+      "source_location": {
+        "why": "§1–2",
+        "how": "§3; Figure 3",
+        "what": "§4; Tables 1–3",
+        "limits": "§4, Table 1 and evaluation-budget discussion (scope-based critique)"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "arXiv HTML failed to load; primary PDF was read instead. Page numbers are the printed one-based PDF page numbers. No claim to have read all 96 pages."
+    },
+    {
+      "label": "R08",
+      "id": "ace2025",
+      "title": "Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models",
+      "author": "Qizheng Zhang et al.",
+      "authors": [
+        "Qizheng Zhang"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2025,
+      "arxiv_id": "2510.04618",
+      "version": "v3",
+      "first_submitted": "2025-10-06",
+      "version_date": "2026-03-29",
+      "url": "https://arxiv.org/abs/2510.04618v3",
+      "metadata_url": "https://arxiv.org/abs/2510.04618",
+      "full_text_url": "https://arxiv.org/html/2510.04618v3",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "controlled_benchmark"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§3 Agentic Context Engineering",
+        "§4.1–4.3 setup and AppWorld results",
+        "§5 Discussion, Limitations and Challenges"
+      ],
+      "source_location": {
+        "why": "§1–2",
+        "how": "§3.1–3.2",
+        "what": "§4.1–4.3; Table 1",
+        "limits": "§5, Limitations and Challenges"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "Offline adaptation and predict-then-update online adaptation are distinct evaluation protocols and are not pooled into one efficacy estimate."
+    },
+    {
+      "label": "R09",
+      "id": "voyager2023",
+      "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "author": "Guanzhi Wang et al.",
+      "authors": [
+        "Guanzhi Wang"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2023,
+      "arxiv_id": "2305.16291",
+      "version": "v2",
+      "first_submitted": "2023-05-25",
+      "version_date": "2023-10-19",
+      "url": "https://arxiv.org/abs/2305.16291v2",
+      "metadata_url": "https://arxiv.org/abs/2305.16291",
+      "full_text_url": "https://arxiv.org/html/2305.16291v2",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "embodied_agent_experiment"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§2 Method",
+        "§3.3 Evaluation Results",
+        "§3.4 Ablation Studies",
+        "§4 Limitations and Future Work"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§2.1–2.3",
+        "what": "§3.3–3.4; Tables 1–2",
+        "limits": "§3.2 comparison boundary; §4"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "Evidence concerns the Minecraft/Mineflayer interface, with executable code skills; it is not a direct test of modern SKILL.md host interoperability."
+    },
+    {
+      "label": "R10",
+      "id": "reflexion2023",
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "author": "Noah Shinn et al.",
+      "authors": [
+        "Noah Shinn"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2023,
+      "arxiv_id": "2303.11366",
+      "version": "v4",
+      "first_submitted": "2023-03-20",
+      "version_date": "2023-10-10",
+      "url": "https://arxiv.org/abs/2303.11366v4",
+      "metadata_url": "https://arxiv.org/abs/2303.11366",
+      "full_text_url": "https://arxiv.org/html/2303.11366v4",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "agent_experiment"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§3 Reflexion",
+        "§4.3 programming results and ablations",
+        "§5 Limitations"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§3; Algorithm 1",
+        "what": "§4.3; Table 3",
+        "limits": "§4.3 evaluator false positives; §5"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "The selected ablation is HumanEval Rust's 50 hardest problems, not an aggregate over all tasks."
+    },
+    {
+      "label": "R11",
+      "id": "selfrefine2023",
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "author": "Aman Madaan et al.",
+      "authors": [
+        "Aman Madaan"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2023,
+      "arxiv_id": "2303.17651",
+      "version": "v2",
+      "first_submitted": "2023-03-30",
+      "version_date": "2023-05-25",
+      "url": "https://arxiv.org/abs/2303.17651v2",
+      "metadata_url": "https://arxiv.org/abs/2303.17651",
+      "full_text_url": "https://arxiv.org/html/2303.17651v2",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "generation_experiment"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§2 Iterative Refinement with Self-Refine",
+        "§3 Evaluation",
+        "§6 Limitations and Discussion"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§2; Algorithm 1",
+        "what": "§3.1–3.3; Table 1",
+        "limits": "§6"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "This iteratively revises an output; it does not itself establish a persistent, versioned cross-task skill library."
+    },
+    {
+      "label": "R12",
+      "id": "rethink2026",
+      "title": "Rethinking Self-Evolving Agent Skills: Feedback Dynamics over Multiple Rounds",
+      "author": "Yuxuan Liu et al.",
+      "authors": [
+        "Yuxuan Liu"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2608.02636",
+      "version": "v1",
+      "first_submitted": "2026-07-31",
+      "version_date": "2026-07-31",
+      "url": "https://arxiv.org/abs/2608.02636v1",
+      "metadata_url": "https://arxiv.org/abs/2608.02636",
+      "full_text_url": "https://arxiv.org/html/2608.02636v1",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "controlled_benchmark",
+        "counterevidence"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "Framework Overview",
+        "Experiments: Experimental Setup and Main Results",
+        "Analysis: feedback composition and additional rounds",
+        "Limitations"
+      ],
+      "source_location": {
+        "why": "Introduction",
+        "how": "Framework Overview; Experimental Setup",
+        "what": "Tables 2–3; Effects of Additional Evolution Rounds",
+        "limits": "Limitations; Generalization of Evolved Skills"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "arXiv displays submission on 2026-07-31 despite the 2608 identifier. Byte-identical reruns are separated from artifact improvements."
+    },
+    {
+      "label": "R13",
+      "id": "skillcoach2026",
+      "title": "SkillCoach: Self-Evolving Rubrics for Evaluating and Enhancing Agentic Skill-Use",
+      "author": "Jiayin Zhu et al.",
+      "authors": [
+        "Jiayin Zhu"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2607.01874",
+      "version": "v1",
+      "first_submitted": "2026-07-02",
+      "version_date": "2026-07-02",
+      "url": "https://arxiv.org/abs/2607.01874v1",
+      "metadata_url": "https://arxiv.org/abs/2607.01874",
+      "full_text_url": "https://arxiv.org/html/2607.01874v1",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "evaluation_framework",
+        "supervised_training_experiment"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§3 Method",
+        "§4.1 Quality Validation of Self-Evolving Rubrics",
+        "§4.4 discussion of distractors",
+        "§6 Limitations",
+        "Appendix A task inventory"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§3.1–3.5",
+        "what": "§4.1; Table 2; Appendix A, Table 5",
+        "limits": "§6"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "Rubric validation is described as a human-gold, judge-assisted audit, not a new human annotation study; task-family selection favors skill-dependent tasks."
+    },
+    {
+      "label": "R14",
+      "id": "skillzip2026",
+      "title": "SkillZip: Evaluation-Free Skill Compression for Self-Evolving Agents by Discovering Reusable Structure",
+      "author": "Xiaofan Bai et al.",
+      "authors": [
+        "Xiaofan Bai"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2608.11079",
+      "version": "v2",
+      "first_submitted": "2026-08-11",
+      "version_date": "2026-08-16",
+      "url": "https://arxiv.org/abs/2608.11079v2",
+      "metadata_url": "https://arxiv.org/abs/2608.11079",
+      "full_text_url": "https://arxiv.org/html/2608.11079v2",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "method",
+        "formal_conditional_property",
+        "benchmark_experiment"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§III From Skill Text to a Compact Contract",
+        "§IV-C Preservation and Continual Compression",
+        "§V-B Zip-on-Write",
+        "§VI-A–VI-D experiments",
+        "Appendix A-D Boundary of the Guarantee"
+      ],
+      "source_location": {
+        "why": "§I–III",
+        "how": "§III; §IV-C; §V-B",
+        "what": "§VI; Tables I–II",
+        "limits": "Appendix A-D; Appendix D-C"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "Evaluation-free describes the compression phase. Behavioral evaluation still occurs afterward; parsed-contract preservation is conditional on extraction and is not universal model-behavior equivalence."
+    },
+    {
+      "label": "R15",
+      "id": "evaluation2026",
+      "title": "Agent Skill Evaluation and Evolution: Frameworks and Benchmarks",
+      "author": "Kexin Ding et al.",
+      "authors": [
+        "Kexin Ding"
+      ],
+      "authors_complete": false,
+      "author_note": "仅记录已核验首作者；et al. 明示省略其余作者。",
+      "year": 2026,
+      "arxiv_id": "2606.11435",
+      "version": "v1",
+      "first_submitted": "2026-06-09",
+      "version_date": "2026-06-09",
+      "url": "https://arxiv.org/abs/2606.11435v1",
+      "metadata_url": "https://arxiv.org/abs/2606.11435",
+      "full_text_url": "https://arxiv.org/html/2606.11435v1",
+      "accessed": "2026-10-06",
+      "source_kind": "primary_paper",
+      "evidence_types": [
+        "survey"
+      ],
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "§3 Skill Evolution",
+        "§4 Skill-centric Evaluation and Benchmarks",
+        "§5 Reflection and Future Directions"
+      ],
+      "source_location": {
+        "why": "§1",
+        "how": "§3 classification",
+        "what": "§4; Tables 1–2",
+        "limits": "§4–5 (survey scope and dated gap statements)"
+      },
+      "location_convention": "优先论文节标题、表号与算法号；HTML渲染行号不作为永久定位。",
+      "reproduction_status": "not_reproduced",
+      "verification_note": "The June claim of missing longitudinal benchmarks is historical; it cannot be reused as an October novelty claim after later work such as Rethinking."
+    }
+  ]
+}
+

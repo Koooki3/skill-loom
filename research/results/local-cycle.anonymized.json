@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "status": "pass",
+  "skill_count_before": 39,
+  "skill_count_after": 39,
+  "errors_after": 0,
+  "warnings_after": 0,
+  "changed_skill": "skills-maintenance",
+  "changed_files": 2,
+  "rollback_exact": true,
+  "reapply": "complete",
+  "no_change": "no_change",
+  "protected_config_unchanged": true,
+  "limits": "Real local maintenance integration; not an LLM-quality benchmark or native hook test.",
+  "recorded_at": "2026-10-06T08:06:49.292530+00:00",
+  "anonymized": true,
+  "planned_before_files": {
+    "SKILL.md": "20bc36d5d4a9bd8217279234bb7476b74705c62a1da337c4bc176333181884d5",
+    "agents/openai.yaml": "c5efc7039f4e6281847376771a2a64cf768dac788346c56706a5930cb0fac3f1",
+    "references/maintenance.md": "6b1cdabd4ee76cb81bdc05ffd34bbe97acc20cdaa66286e37a42762f1a44787b",
+    "scripts/audit_skills.py": "5653fb02ba2eeb12cc5d8d1753a87b41c2766bc2892bcb297c54da77f0a565c3"
+  },
+  "planned_after_files": {
+    "SKILL.md": "cb315d8309ca7ec29fb59a44e264f0eddb29d5593cc216d348a18ce2f7366f2d",
+    "agents/openai.yaml": "c5efc7039f4e6281847376771a2a64cf768dac788346c56706a5930cb0fac3f1",
+    "references/maintenance.md": "6b1cdabd4ee76cb81bdc05ffd34bbe97acc20cdaa66286e37a42762f1a44787b",
+    "references/self-evolution.md": "9007858b0f5544d5517d3bc80cef15df2c9429c7f030f48115eccd85b4f5ce43",
+    "scripts/audit_skills.py": "5653fb02ba2eeb12cc5d8d1753a87b41c2766bc2892bcb297c54da77f0a565c3"
+  },
+  "observed_after_files": {
+    "SKILL.md": "cb315d8309ca7ec29fb59a44e264f0eddb29d5593cc216d348a18ce2f7366f2d",
+    "agents/openai.yaml": "c5efc7039f4e6281847376771a2a64cf768dac788346c56706a5930cb0fac3f1",
+    "references/maintenance.md": "6b1cdabd4ee76cb81bdc05ffd34bbe97acc20cdaa66286e37a42762f1a44787b",
+    "references/self-evolution.md": "9007858b0f5544d5517d3bc80cef15df2c9429c7f030f48115eccd85b4f5ce43",
+    "scripts/audit_skills.py": "5653fb02ba2eeb12cc5d8d1753a87b41c2766bc2892bcb297c54da77f0a565c3"
+  },
+  "planned_before_digest": "1c757a506db156844cec2b1f69e6179a28bcc85fcc94514b15c777ccd4df27b6",
+  "planned_after_digest": "00859549587dc4996ee838e3406ef7d0a0201ec019655ece9bab690d13ac0d6d",
+  "observed_after_digest": "00859549587dc4996ee838e3406ef7d0a0201ec019655ece9bab690d13ac0d6d",
+  "rollback_record_status": "rolled_back",
+  "hash_encoding": "SHA-256 of UTF-8 JSON, sorted keys, no extra whitespace; per-file values are SHA-256 of exact file bytes.",
+  "evidence_boundary": "Selected original local outputs and final file hashes. The cycle recorded exact rollback equality; raw paths, original skill content, configuration and transaction journals remain private. This summary is not an independent replication."
+}

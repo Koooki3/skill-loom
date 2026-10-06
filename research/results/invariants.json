@@ -1,0 +1,287 @@
+{
+  "schema": 1,
+  "observed_at": "2026-10-06T08:03:14.500484+00:00",
+  "study": "deterministic-fault-injection",
+  "rows": [
+    {
+      "family": "mutation",
+      "case": "clean-update",
+      "method": "unchecked-copy",
+      "expected": "applied",
+      "observed": "applied",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "clean-update",
+      "method": "static-only",
+      "expected": "applied",
+      "observed": "applied",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "clean-update",
+      "method": "guarded",
+      "expected": "applied",
+      "observed": "applied",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "missing-reference",
+      "method": "unchecked-copy",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "missing-reference",
+      "method": "static-only",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "missing-reference",
+      "method": "guarded",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "syntax-error",
+      "method": "unchecked-copy",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "syntax-error",
+      "method": "static-only",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "syntax-error",
+      "method": "guarded",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "candidate-drift",
+      "method": "unchecked-copy",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "candidate-drift",
+      "method": "static-only",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "candidate-drift",
+      "method": "guarded",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "runtime-drift",
+      "method": "unchecked-copy",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "runtime-drift",
+      "method": "static-only",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "runtime-drift",
+      "method": "guarded",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "new-local-file",
+      "method": "unchecked-copy",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "new-local-file",
+      "method": "static-only",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "new-local-file",
+      "method": "guarded",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "rollback-drift",
+      "method": "unchecked-copy",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "rollback-drift",
+      "method": "static-only",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "rollback-drift",
+      "method": "guarded",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "mutation",
+      "case": "corrupt-backup",
+      "method": "unchecked-copy",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "corrupt-backup",
+      "method": "static-only",
+      "expected": "refused",
+      "observed": "applied",
+      "contract_satisfied": false
+    },
+    {
+      "family": "mutation",
+      "case": "corrupt-backup",
+      "method": "guarded",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "receipt",
+      "case": "valid-receipt",
+      "method": "declaration-only",
+      "expected": "accepted",
+      "observed": "accepted",
+      "contract_satisfied": true
+    },
+    {
+      "family": "receipt",
+      "case": "valid-receipt",
+      "method": "bound-receipt",
+      "expected": "accepted",
+      "observed": "accepted",
+      "contract_satisfied": true
+    },
+    {
+      "family": "receipt",
+      "case": "stale-artifact",
+      "method": "declaration-only",
+      "expected": "refused",
+      "observed": "accepted",
+      "contract_satisfied": false
+    },
+    {
+      "family": "receipt",
+      "case": "stale-artifact",
+      "method": "bound-receipt",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "receipt",
+      "case": "replayed-receipt",
+      "method": "declaration-only",
+      "expected": "refused",
+      "observed": "accepted",
+      "contract_satisfied": false
+    },
+    {
+      "family": "receipt",
+      "case": "replayed-receipt",
+      "method": "bound-receipt",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    },
+    {
+      "family": "receipt",
+      "case": "expired-receipt",
+      "method": "declaration-only",
+      "expected": "refused",
+      "observed": "accepted",
+      "contract_satisfied": false
+    },
+    {
+      "family": "receipt",
+      "case": "expired-receipt",
+      "method": "bound-receipt",
+      "expected": "refused",
+      "observed": "refused",
+      "contract_satisfied": true
+    }
+  ],
+  "summary": {
+    "unchecked-copy": {
+      "satisfied": 1,
+      "cases": 8
+    },
+    "static-only": {
+      "satisfied": 3,
+      "cases": 8
+    },
+    "guarded": {
+      "satisfied": 8,
+      "cases": 8
+    },
+    "declaration-only": {
+      "satisfied": 1,
+      "cases": 4
+    },
+    "bound-receipt": {
+      "satisfied": 4,
+      "cases": 4
+    }
+  },
+  "independent_units": "12 deliberately constructed scenarios; repeat runs are not independent statistical samples",
+  "limits": "Hand-selected software contracts with simple comparator implementations, not agent-task accuracy, global safety, deployment readiness or comparisons to published skill systems."
+}

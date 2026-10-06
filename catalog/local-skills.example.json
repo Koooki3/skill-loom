@@ -1,0 +1,879 @@
+{
+  "schema": 1,
+  "snapshot_date": "2026-10-06",
+  "anonymized": true,
+  "skills": [
+    {
+      "name": "academic-research-plan",
+      "category": "research",
+      "scope": "general",
+      "description": "基于来源比较 WHY/HOW/WHAT 并形成研究计划；不能把计划表述为已完成实验。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "Imbad0202/academic-research-skills-codex",
+        "ref": "70b412fe69d3b5bf6b16adf64a96160bdd3c2d28",
+        "path": "skills/academic-research-suite/ars/deep-research",
+        "url": "https://github.com/Imbad0202/academic-research-skills-codex/tree/70b412fe69d3b5bf6b16adf64a96160bdd3c2d28",
+        "license": "CC-BY-NC-4.0",
+        "license_note": "固定提交和所选组件许可证已在本地来源记录核对；静态文档选取改编。"
+      },
+      "dependencies": [
+        "研究问题",
+        "可读论文或公开来源"
+      ],
+      "route_notes": "用户级安装；用于研究设计，不代替文献证据。",
+      "capabilities": [
+        "research-planning",
+        "literature-synthesis",
+        "evidence-mapping"
+      ]
+    },
+    {
+      "name": "codegen-diagram",
+      "category": "diagrams",
+      "scope": "general",
+      "description": "从真实代码、配置或 schema 提取架构、技术栈与数据结构，交付可编辑系统图；不用于纯概念教学图。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "xstongxue/best-skills",
+        "ref": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+        "path": "skills/codegen-diagram",
+        "url": "https://github.com/xstongxue/best-skills/tree/9aa4e555950da6e43e7d98c5f0c7b70264204850/skills/codegen-diagram",
+        "license": "Apache-2.0",
+        "license_note": "固定提交及原许可证保留情况有本地记录。"
+      },
+      "dependencies": [
+        "目标仓库源文件或数据库 schema",
+        "Draw.io 兼容编辑器（需要打开/编辑图时）"
+      ],
+      "route_notes": "代码证据导向；一般图稿格式/表现要求另选 drawio-diagram。",
+      "capabilities": [
+        "codebase-diagramming",
+        "schema-analysis",
+        "architecture-visualization"
+      ]
+    },
+    {
+      "name": "codegen-doc",
+      "category": "documentation",
+      "scope": "general",
+      "description": "依据真实仓库源码撰写系统论文段落、项目汇报、技术难点或简历经历；新手导读与构建调试文档优先 project-docs。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "xstongxue/best-skills",
+        "ref": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+        "path": "skills/codegen-doc",
+        "url": "https://github.com/xstongxue/best-skills/tree/9aa4e555950da6e43e7d98c5f0c7b70264204850/skills/codegen-doc",
+        "license": "Apache-2.0",
+        "license_note": "固定提交及原许可证保留情况有本地记录。"
+      },
+      "dependencies": [
+        "可读取的源码与配置",
+        "用户指定的文体/输出格式"
+      ],
+      "route_notes": "必须用仓库证据支撑事实；不要同时叠加同类 project-docs。",
+      "capabilities": [
+        "source-grounded-writing",
+        "project-narrative",
+        "technical-writing"
+      ]
+    },
+    {
+      "name": "dataset-from-existing-impl",
+      "category": "dataset-engineering",
+      "scope": "project_specific: named object-detection data workspaces",
+      "description": "复用限定目标检测实现中的数据集结构，转换标注、生成配置并校验图片/标签划分；不提供适用于所有项目的通用数据标准。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "目标工作区的既有数据集实现",
+        "图片与标注源文件",
+        "项目现有 Python/标注工具"
+      ],
+      "route_notes": "固定项目/实现范围；用户级发现不等于可向任意目标检测项目套用。",
+      "capabilities": [
+        "dataset-preparation",
+        "annotation-conversion",
+        "dataset-validation"
+      ]
+    },
+    {
+      "name": "drawio-diagram",
+      "category": "diagrams",
+      "scope": "general",
+      "description": "创建可编辑 Draw.io 模型、算法、教学图或参考风格迁移；代码驱动架构图优先 codegen-diagram，小型聊天示意可用 Mermaid。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "xstongxue/best-skills",
+        "ref": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+        "path": "skills/drawio-diagram",
+        "url": "https://github.com/xstongxue/best-skills/tree/9aa4e555950da6e43e7d98c5f0c7b70264204850/skills/drawio-diagram",
+        "license": "Apache-2.0",
+        "license_note": "固定提交及原许可证保留情况有本地记录。"
+      },
+      "dependencies": [
+        "图稿内容或参考图",
+        "Draw.io 兼容编辑器"
+      ],
+      "route_notes": "图形格式/编辑方式优先服从用户明确选择。",
+      "capabilities": [
+        "editable-diagramming",
+        "reference-style-transfer",
+        "technical-illustration"
+      ]
+    },
+    {
+      "name": "engineering-thesis-tone",
+      "category": "writing",
+      "scope": "general",
+      "description": "撰写或润色中文工程学位论文，保持客观语气、先定义后论述及作者事实与判断；不补写未给出的事实。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "作者稿件",
+        "术语表或事实来源（如有）"
+      ],
+      "route_notes": "本地文体工作流；仅编辑范围内的文字。",
+      "capabilities": [
+        "academic-editing",
+        "technical-writing",
+        "author-stance-preservation"
+      ]
+    },
+    {
+      "name": "excalidraw-diagram",
+      "category": "diagrams",
+      "scope": "general",
+      "description": "为明确需要 Excalidraw 或手绘风格的请求创建/修改白板、架构和流程图；不是所有图稿的默认格式。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "xstongxue/best-skills",
+        "ref": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+        "path": "skills/excalidraw-diagram",
+        "url": "https://github.com/xstongxue/best-skills/tree/9aa4e555950da6e43e7d98c5f0c7b70264204850/skills/excalidraw-diagram",
+        "license": "Apache-2.0",
+        "license_note": "固定提交及原许可证保留情况有本地记录。"
+      },
+      "dependencies": [
+        "图稿内容或参考图",
+        "Excalidraw 兼容应用"
+      ],
+      "route_notes": "要求目标格式明确；否则优先简单图或既有项目图稿标准。",
+      "capabilities": [
+        "whiteboarding",
+        "editable-diagramming",
+        "process-visualization"
+      ]
+    },
+    {
+      "name": "gh-address-comments",
+      "category": "github-workflow",
+      "scope": "general",
+      "description": "读取指定 GitHub PR 的评审意见并落实用户要求的代码修正；不自动发布回复或解决评审线程。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "openai/skills",
+        "ref": "49f948faa9258a0c61caceaf225e179651397431",
+        "path": "skills/.curated/gh-address-comments",
+        "url": "https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/gh-address-comments",
+        "license": "Apache-2.0",
+        "license_note": "该组件 LICENSE.txt 文件已核；仓库根许可证不作为组件许可替代。"
+      },
+      "dependencies": [
+        "GitHub connector 或已认证 gh",
+        "目标仓库访问权限"
+      ],
+      "route_notes": "处理评论与外部发布是不同操作；不得自动回复、发布或 resolve。",
+      "capabilities": [
+        "pull-request-review",
+        "comment-triage",
+        "code-fix"
+      ]
+    },
+    {
+      "name": "gh-fix-ci",
+      "category": "github-workflow",
+      "scope": "general",
+      "description": "排查并修复 GitHub Actions 检查失败；本地普通测试问题或没有失败检查时不触发。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "openai/skills",
+        "ref": "49f948faa9258a0c61caceaf225e179651397431",
+        "path": "skills/.curated/gh-fix-ci",
+        "url": "https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/gh-fix-ci",
+        "license": "Apache-2.0",
+        "license_note": "该组件 LICENSE.txt 文件已核；仓库根许可证不作为组件许可替代。"
+      },
+      "dependencies": [
+        "已认证 gh",
+        "目标仓库和 Actions 失败日志"
+      ],
+      "route_notes": "未读取失败日志或无法访问 Actions 时不得声称诊断/修复已完成。",
+      "capabilities": [
+        "ci-diagnosis",
+        "workflow-debugging",
+        "code-fix"
+      ]
+    },
+    {
+      "name": "imagegen-api",
+      "category": "image-generation",
+      "scope": "general",
+      "description": "维护/运行用户明确指定的 OpenAI Images API 脚本与批处理；普通生图或图像编辑走宿主 imagegen。",
+      "source_kind": "legacy_unknown_local",
+      "upstream": null,
+      "dependencies": [
+        "明确选择 API 路线",
+        "可用 API 凭据",
+        "现有 Python/API 客户端"
+      ],
+      "route_notes": "用户级旧技能；本地 Apache-2.0 许可证文本存在，但上游仓库/提交未确认。",
+      "capabilities": [
+        "image-generation-api",
+        "batch-imaging",
+        "image-pipeline"
+      ]
+    },
+    {
+      "name": "jupyter-notebook",
+      "category": "scientific-computing",
+      "scope": "general",
+      "description": "创建或修改实验、探索和教程 Notebook，并复用现有模板；普通 Python 脚本任务不触发。",
+      "source_kind": "legacy_unknown_local",
+      "upstream": null,
+      "dependencies": [
+        "现有 Python",
+        "执行 Notebook 时需要兼容 Jupyter 运行时及项目依赖"
+      ],
+      "route_notes": "用户级旧技能；本地 Apache-2.0 许可证文本存在，但上游仓库/提交未确认。",
+      "capabilities": [
+        "notebook-authoring",
+        "data-exploration",
+        "experiment-notebook"
+      ]
+    },
+    {
+      "name": "mcp-builder",
+      "category": "developer-tools",
+      "scope": "general",
+      "description": "构建或修改 Python/TypeScript MCP 服务的工具 schema、传输、鉴权与错误处理；使用既有 connector 不属于服务器开发。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "anthropics/skills",
+        "ref": "683bc88e56f3e09ba94f7055977f3d3aa499f202",
+        "path": "skills/mcp-builder",
+        "url": "https://github.com/anthropics/skills/tree/683bc88e56f3e09ba94f7055977f3d3aa499f202/skills/mcp-builder",
+        "license": "Apache-2.0",
+        "license_note": "该组件 LICENSE.txt 文件及固定提交已核。"
+      },
+      "dependencies": [
+        "Python 或 Node/TypeScript",
+        "与目标实现匹配的 MCP SDK"
+      ],
+      "route_notes": "具体 SDK 和传输按项目选择；Site 托管和 connector 使用走各自宿主能力。",
+      "capabilities": [
+        "mcp-server-development",
+        "tool-schema",
+        "transport-auth"
+      ]
+    },
+    {
+      "name": "md-report-summary",
+      "category": "documentation",
+      "scope": "general",
+      "description": "根据作者提供的记录和可访问项目证据整理周报、进展汇报或复盘；不以新闻替代个人工作事实。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "xstongxue/best-skills",
+        "ref": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+        "path": "skills/md-report-summary",
+        "url": "https://github.com/xstongxue/best-skills/tree/9aa4e555950da6e43e7d98c5f0c7b70264204850/skills/md-report-summary",
+        "license": "Apache-2.0",
+        "license_note": "固定提交及原许可证保留情况有本地记录。"
+      },
+      "dependencies": [
+        "作者记录、草稿或项目证据"
+      ],
+      "route_notes": "依据实际输入归纳；不能凭会话之外的猜测填充进展。",
+      "capabilities": [
+        "status-reporting",
+        "evidence-summary",
+        "work-summary"
+      ]
+    },
+    {
+      "name": "nature-experiment-log",
+      "category": "research",
+      "scope": "general",
+      "description": "将实际 ML/机器人实验记录整理为可追溯日志，区分计划、观察、版本、种子、单位、指标和异常。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "Yuan1z0825/nature-skills",
+        "ref": "84880815fb37317b3766bff2c2abba395b8993c3",
+        "path": "skills/nature-experiment-log",
+        "url": "https://github.com/Yuan1z0825/nature-skills/tree/84880815fb37317b3766bff2c2abba395b8993c3/skills/nature-experiment-log",
+        "license": "MIT component; Apache-2.0 root",
+        "license_note": "组件 frontmatter 和随包许可证文本已核。"
+      },
+      "dependencies": [
+        "实际实验记录",
+        "代码/数据版本、种子、试验单位和指标（如有）"
+      ],
+      "route_notes": "不编造缺失结果；使用随包模板，不要求特定云文档服务。",
+      "capabilities": [
+        "reproducible-experiments",
+        "experiment-logging",
+        "provenance-tracking"
+      ]
+    },
+    {
+      "name": "nature-ref-verifier",
+      "category": "research",
+      "scope": "general",
+      "description": "对照出版社、DOI 或 arXiv 记录核验书目元数据并提出 BibTeX 修正；书目身份不等于主张证据。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "Yuan1z0825/nature-skills",
+        "ref": "84880815fb37317b3766bff2c2abba395b8993c3",
+        "path": "skills/nature-ref-verifier",
+        "url": "https://github.com/Yuan1z0825/nature-skills/tree/84880815fb37317b3766bff2c2abba395b8993c3/skills/nature-ref-verifier",
+        "license": "Apache-2.0",
+        "license_note": "固定提交与保留许可证文本已核。"
+      },
+      "dependencies": [
+        "DOI、题名或 BibTeX",
+        "可访问的出版社/DOI/arXiv 页面"
+      ],
+      "route_notes": "只核书目字段；论文是否支持具体论断需单独阅读全文判断。",
+      "capabilities": [
+        "bibliographic-verification",
+        "doi-lookup",
+        "bibtex"
+      ]
+    },
+    {
+      "name": "nature-response",
+      "category": "research-writing",
+      "scope": "general",
+      "description": "依据评审意见、原稿和已实际完成的修改撰写逐点回复或修订包；保留完成/计划状态。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "Yuan1z0825/nature-skills",
+        "ref": "84880815fb37317b3766bff2c2abba395b8993c3",
+        "path": "skills/nature-response",
+        "url": "https://github.com/Yuan1z0825/nature-skills/tree/84880815fb37317b3766bff2c2abba395b8993c3/skills/nature-response",
+        "license": "Apache-2.0",
+        "license_note": "固定提交与保留许可证文本已核；目标 venue 要求优先。"
+      },
+      "dependencies": [
+        "评审意见",
+        "当前稿件",
+        "实际修改或 diff",
+        "目标 venue 规则"
+      ],
+      "route_notes": "不把计划工作描述为已完成；期刊规则按作者指定 venue 调整。",
+      "capabilities": [
+        "peer-review-response",
+        "revision-package",
+        "author-response"
+      ]
+    },
+    {
+      "name": "nature-statistics",
+      "category": "research",
+      "scope": "general",
+      "description": "核查 ML/机器人实验的独立单位、重复、不确定性、统计比较和图注；仅用用户提供的实际数据。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "Yuan1z0825/nature-skills",
+        "ref": "84880815fb37317b3766bff2c2abba395b8993c3",
+        "path": "skills/nature-statistics",
+        "url": "https://github.com/Yuan1z0825/nature-skills/tree/84880815fb37317b3766bff2c2abba395b8993c3/skills/nature-statistics",
+        "license": "Apache-2.0",
+        "license_note": "固定提交与保留许可证文本已核。"
+      },
+      "dependencies": [
+        "真实实验数据",
+        "试验单位和设计说明"
+      ],
+      "route_notes": "没有数据时报告缺口；不把相邻帧/样本自动当作独立重复。",
+      "capabilities": [
+        "reproducible-experiments",
+        "statistical-review",
+        "uncertainty-reporting"
+      ]
+    },
+    {
+      "name": "obsidian-task-dashboard-dev",
+      "category": "productivity-tools",
+      "scope": "project_specific: one named Obsidian vault",
+      "description": "在指定 Obsidian vault 开发/重构任务仪表盘、Dataview 查询、日模板、任务排序和双向同步。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "目标 vault",
+        "Obsidian",
+        "Dataview/DataviewJS 插件及本地笔记/脚本"
+      ],
+      "route_notes": "固定单一 vault；其他 vault 不触发。用户级安装必须保留此范围说明。",
+      "capabilities": [
+        "obsidian-dashboard-development",
+        "dataview",
+        "task-sync"
+      ]
+    },
+    {
+      "name": "obsidian-task-dashboard-maintenance",
+      "category": "productivity-tools",
+      "scope": "project_specific: same named Obsidian vault",
+      "description": "排查同一任务仪表盘的空白/畸形输出、Dataview 错误、同步中断、模板统计泄漏和例行维护。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "目标 vault",
+        "Obsidian",
+        "Dataview/DataviewJS 插件",
+        "相关错误与仪表盘/日记资料"
+      ],
+      "route_notes": "和 dashboard-dev 共享项目边界但任务不同；新功能走 dev，故障/例行健康检查走 maintenance。",
+      "capabilities": [
+        "obsidian-dashboard-maintenance",
+        "dataview-debugging",
+        "task-sync"
+      ]
+    },
+    {
+      "name": "oil-motion",
+      "category": "web-media",
+      "scope": "general",
+      "description": "用连续视频/帧制作由滚动、拖动、触摸或状态驱动的网页动画；普通 CSS 过渡、独立成片或单张配图不触发。",
+      "source_kind": "known_upstream_unpinned",
+      "upstream": {
+        "repo": "oil-oil/oil-motion",
+        "ref": null,
+        "url": "https://github.com/oil-oil/oil-motion",
+        "license": "MIT",
+        "license_note": "公开仓库由随包 README 指明；本地保留 MIT 文件；安装提交未记录。"
+      },
+      "dependencies": [
+        "本地视频/序列帧",
+        "Python 3.10+",
+        "FFmpeg",
+        "Node/API链只在被用户选择时需要"
+      ],
+      "route_notes": "用户级发现；生成式服务、凭据与计费仅在用户选择相应流程时涉及。",
+      "capabilities": [
+        "interactive-web-animation",
+        "video-pipeline",
+        "frame-sequence"
+      ]
+    },
+    {
+      "name": "oil-ui",
+      "category": "visual-design",
+      "scope": "general",
+      "description": "探索、精修或评审网页/App/组件视觉方向、层级和实际画面；业务逻辑另行验证。",
+      "source_kind": "known_upstream_unpinned",
+      "upstream": {
+        "repo": "oil-oil/oil-ui",
+        "ref": null,
+        "url": "https://github.com/oil-oil/oil-ui",
+        "license": "MIT",
+        "license_note": "公开仓库由随包 README 指明；本地保留 MIT 文件；安装提交未记录。"
+      },
+      "dependencies": [
+        "现有产品/组件、品牌资料或截图（如有）",
+        "浏览器预览用于视觉验收"
+      ],
+      "route_notes": "用户级发现；纯 React 性能问题选 React 指南，键盘/焦点验收选 web-accessibility。",
+      "capabilities": [
+        "interface-design",
+        "visual-review",
+        "responsive-ui"
+      ]
+    },
+    {
+      "name": "pdf-local-ops",
+      "category": "documents",
+      "scope": "general",
+      "description": "对本地 PDF 做文本/表格提取、拆分、合并、旋转和 OCR 准备；新文档排版、表单和视觉交付用宿主 PDF 能力。",
+      "source_kind": "legacy_unknown_local",
+      "upstream": null,
+      "dependencies": [
+        "本地 PDF",
+        "当前可用的 PDF/OCR 工具"
+      ],
+      "route_notes": "本地 Apache-2.0 许可证文本保留；旧上游仓库和提交未确认，不据技能名推断来源。",
+      "capabilities": [
+        "pdf-text-extraction",
+        "pdf-page-operations",
+        "ocr-preparation"
+      ]
+    },
+    {
+      "name": "project-docs",
+      "category": "documentation",
+      "scope": "general",
+      "description": "依据实际仓库为新人写上手、架构、代码导读、构建和调试文档；论文章节/汇报等叙述改写用 codegen-doc。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "xstongxue/best-skills",
+        "ref": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+        "path": "skills/project-docs",
+        "url": "https://github.com/xstongxue/best-skills/tree/9aa4e555950da6e43e7d98c5f0c7b70264204850/skills/project-docs",
+        "license": "Apache-2.0",
+        "license_note": "固定提交及原许可证保留情况有本地记录。"
+      },
+      "dependencies": [
+        "目标仓库 README、源码和构建入口"
+      ],
+      "route_notes": "以源码和实际命令为据；只读请求范围内文件，不默认生成固定篇数。",
+      "capabilities": [
+        "project-documentation",
+        "onboarding",
+        "build-debug-guides"
+      ]
+    },
+    {
+      "name": "reference-grounded-writing",
+      "category": "research-writing",
+      "scope": "general",
+      "description": "为使用数字引文的学术稿建立来源证据并核对引用/参考文献对应；不代替整篇论文写作或引文所支持的论证评估。",
+      "source_kind": "legacy_unknown_local",
+      "upstream": null,
+      "dependencies": [
+        "稿件和作者指定引文格式",
+        "可读的原始来源"
+      ],
+      "route_notes": "未找到可核验来源/许可证记录；检查器仅用于其声明支持的完整稿格式。",
+      "capabilities": [
+        "source-notes",
+        "citation-audit",
+        "source-traceability"
+      ]
+    },
+    {
+      "name": "research-paper-writing",
+      "category": "research-writing",
+      "scope": "general",
+      "description": "改进 ML/CV/NLP 论文段落、章节组织和论点证据关系；简单语言润色或纯书目核对用更窄的技能。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "Master-cai/Research-Paper-Writing-Skills",
+        "ref": "77e7c2c1ba06f7d71844873147665437a03aac1b",
+        "path": "research-paper-writing",
+        "url": "https://github.com/Master-cai/Research-Paper-Writing-Skills/tree/77e7c2c1ba06f7d71844873147665437a03aac1b",
+        "license": "MIT",
+        "license_note": "固定提交和所选组件许可证在随包 SOURCE.md 中记录；部分知识源归属也按上游说明保留。"
+      },
+      "dependencies": [
+        "真实论文稿件",
+        "可支持主张的原始资料"
+      ],
+      "route_notes": "本地适配收窄了输出范围；只加载与请求章节相关的参考。",
+      "capabilities": [
+        "research-paper-editing",
+        "argument-structure",
+        "review-readiness"
+      ]
+    },
+    {
+      "name": "scientific-visualization",
+      "category": "research-visualization",
+      "scope": "general",
+      "description": "从真实数据制作或审查论文图、误差表示、多面板布局和导出；不替代统计设计审查。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "K-Dense-AI/scientific-agent-skills",
+        "ref": "92ace75ac21efe19a620434e0ca4e356081fe807",
+        "path": "skills/scientific-visualization",
+        "url": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/92ace75ac21efe19a620434e0ca4e356081fe807/skills/scientific-visualization",
+        "license": "MIT",
+        "license_note": "固定提交与 MIT 许可证已核。"
+      },
+      "dependencies": [
+        "真实数据及处理记录",
+        "Python",
+        "Matplotlib"
+      ],
+      "route_notes": "按目标期刊和实际导出尺寸检查；配色规范不替代数据准确性。",
+      "capabilities": [
+        "scientific-plotting",
+        "uncertainty-visualization",
+        "figure-export"
+      ]
+    },
+    {
+      "name": "shuorenhua",
+      "category": "writing",
+      "scope": "general",
+      "description": "用户要求语言润色、审稿或去 AI 味时保留事实、术语、数字、条件、来源与作者立场；不作用于代码、日志和命令输出。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "MrGeDiao/shuorenhua",
+        "ref": "9e6400d5e2cc050485c38fbf0dda682bce66c180",
+        "url": "https://github.com/MrGeDiao/shuorenhua/tree/9e6400d5e2cc050485c38fbf0dda682bce66c180",
+        "license": "MIT",
+        "license_note": "提交 SHA 有安装记录，MIT 文本在当前安装中保留。"
+      },
+      "dependencies": [
+        "作者提供的文本",
+        "明确编辑范围"
+      ],
+      "route_notes": "单纯语言编辑优先；若用户要求改论证，再由 research-paper-writing 处理相关部分。",
+      "capabilities": [
+        "language-polishing",
+        "style-review",
+        "fidelity-preservation"
+      ]
+    },
+    {
+      "name": "skill-prompt-convert",
+      "category": "skill-authoring",
+      "scope": "general",
+      "description": "把已有 SKILL.md 与聊天 Prompt 双向转换并说明依赖和约束；不负责创建、安装完整 Skill 或维护整套技能。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "xstongxue/best-skills",
+        "ref": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+        "path": "skills/skill-prompt-convert",
+        "url": "https://github.com/xstongxue/best-skills/tree/9aa4e555950da6e43e7d98c5f0c7b70264204850/skills/skill-prompt-convert",
+        "license": "Apache-2.0",
+        "license_note": "固定提交及原许可证保留情况有本地记录。"
+      },
+      "dependencies": [
+        "输入 Skill 或 Prompt",
+        "目标调用环境说明"
+      ],
+      "route_notes": "完整 Skill 创作转宿主 skill-creator；安装转宿主 skill-installer。",
+      "capabilities": [
+        "skill-prompt-conversion",
+        "instruction-formatting",
+        "dependency-documentation"
+      ]
+    },
+    {
+      "name": "skills-maintenance",
+      "category": "skill-authoring",
+      "scope": "general",
+      "description": "仅在用户要求盘点、安装、升级或修复用户级 Codex Skills 时维护来源、触发边界、依赖、验证与回退。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "当前用户技能清单",
+        "明确维护范围",
+        "必要时宿主 skill-installer/skill-creator"
+      ],
+      "route_notes": "不因日常使用技能而触发；不修改审批、账户或全局运行配置。",
+      "capabilities": [
+        "skill-maintenance",
+        "provenance-audit",
+        "skill-lifecycle"
+      ]
+    },
+    {
+      "name": "source-grounded-course-notes",
+      "category": "education",
+      "scope": "general",
+      "description": "把课程 PDF、讲义和转录整理成有页码依据的双语笔记、复习提纲与练习；先转 Markdown，再以原页核对公式和图。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "课程原件",
+        "PDF 转 Markdown 工具",
+        "可回看原 PDF 页面"
+      ],
+      "route_notes": "跨课程的本地流程，不绑定单一仓库；缺少原始证据时需标出范围。",
+      "capabilities": [
+        "source-notes",
+        "course-notes",
+        "bilingual-study-guides"
+      ]
+    },
+    {
+      "name": "team-mode",
+      "category": "orchestration",
+      "scope": "general",
+      "description": "按 SOLO/ONE/TWO 判断并行探索、实现或评审是否有净收益；短、串行、共享单一修改目标默认 SOLO。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "Codex 自定义子代理能力",
+        "Python 3.10+ 与保留会话日志（仅本地使用诊断）"
+      ],
+      "route_notes": "主 Agent 负责拆解、整合和最终验收；无对照数据不得宣称节省 token。",
+      "capabilities": [
+        "agent-routing",
+        "task-decomposition",
+        "parallel-review"
+      ]
+    },
+    {
+      "name": "train-test-script-scaffold",
+      "category": "project-engineering",
+      "scope": "project_specific: repository-specific train/test conventions",
+      "description": "为匹配项目新增训练/推理/测试入口，沿用其 train/test 脚本、配置、默认路径和结果布局；不把一个仓库的模板推给其他项目。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "目标仓库既有训练/测试脚本和配置",
+        "项目 Python 工具链"
+      ],
+      "route_notes": "用户级发现但以当前匹配项目为边界；先检查真实约定再生成。",
+      "capabilities": [
+        "training-script-scaffold",
+        "testing-script-scaffold",
+        "project-conventions"
+      ]
+    },
+    {
+      "name": "vercel-composition-patterns",
+      "category": "frontend",
+      "scope": "general",
+      "description": "重构 React 组件 API、复合组件及共享状态；React 19 专属建议必须先核对项目版本。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "vercel-labs/agent-skills",
+        "ref": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "path": "skills/composition-patterns",
+        "url": "https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/composition-patterns",
+        "license": "MIT",
+        "license_note": "MIT 声明见上游技能元数据；仓库根许可证文件不存在。"
+      },
+      "dependencies": [
+        "React 代码与实际版本"
+      ],
+      "route_notes": "组件结构/状态组合专用；性能优化走 vercel-react-best-practices。",
+      "capabilities": [
+        "react-composition",
+        "component-api",
+        "state-architecture"
+      ]
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "category": "frontend",
+      "scope": "general",
+      "description": "优化或评审 React/Next.js 请求瀑布、包体积、取数、重复渲染和渲染性能；不用于静态页视觉设计。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "vercel-labs/agent-skills",
+        "ref": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "path": "skills/react-best-practices",
+        "url": "https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices",
+        "license": "MIT",
+        "license_note": "MIT 声明见上游技能元数据；仓库根许可证文件不存在。"
+      },
+      "dependencies": [
+        "React/Next.js 代码",
+        "当前框架版本和性能证据"
+      ],
+      "route_notes": "根据瓶颈选择具体规则；不作为普通前端默认加载。",
+      "capabilities": [
+        "react-performance",
+        "rendering-optimization",
+        "bundle-analysis"
+      ]
+    },
+    {
+      "name": "web-accessibility",
+      "category": "web-quality",
+      "scope": "general",
+      "description": "审查或修复网页键盘、焦点、语义、替代文本、对比度和读屏体验；不是法规合规认证。",
+      "source_kind": "pinned_upstream_adaptation",
+      "upstream": {
+        "repo": "addyosmani/web-quality-skills",
+        "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+        "path": "skills/accessibility",
+        "url": "https://github.com/addyosmani/web-quality-skills/tree/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/accessibility",
+        "license": "MIT",
+        "license_note": "固定提交及 MIT 许可证已核。"
+      },
+      "dependencies": [
+        "网页/组件代码",
+        "浏览器键盘检查；读屏验证按请求范围"
+      ],
+      "route_notes": "可以独立审查；与 UI 视觉或 React 性能技能组合时须有分开的验收项。",
+      "capabilities": [
+        "web-accessibility",
+        "keyboard-navigation",
+        "semantic-review"
+      ]
+    },
+    {
+      "name": "winui-app",
+      "category": "desktop-development",
+      "scope": "general",
+      "description": "开发、审查或排错 Windows App SDK / WinUI 3 桌面应用；不能套用于 Web UI 或跨平台项目。",
+      "source_kind": "legacy_unknown_local",
+      "upstream": null,
+      "dependencies": [
+        "Windows 环境",
+        "现有 .NET/Windows App SDK 工具链",
+        "当前 Microsoft 文档"
+      ],
+      "route_notes": "本地 Apache-2.0 许可证文本保留；旧上游仓库/提交未确认。安装缺项前先只读检查可用工具链。",
+      "capabilities": [
+        "winui-development",
+        "windows-app-sdk",
+        "desktop-debugging"
+      ]
+    },
+    {
+      "name": "yeet",
+      "category": "git-workflow",
+      "scope": "general",
+      "description": "用户明确要求完整暂存、提交、推送并创建 GitHub PR 时执行；普通代码修改或评审不触发。",
+      "source_kind": "legacy_unknown_local",
+      "upstream": null,
+      "dependencies": [
+        "Git 仓库",
+        "目标分支/remote",
+        "已认证 gh"
+      ],
+      "route_notes": "本地 Apache-2.0 许可证文本保留；原上游仓库/提交未知。只纳入任务范围文件，不默认全仓暂存。",
+      "capabilities": [
+        "git-release-workflow",
+        "pull-request-creation",
+        "scoped-staging"
+      ]
+    },
+    {
+      "name": "yolo-pcb-chart-palette",
+      "category": "project-visualization",
+      "scope": "project_specific: one named detector repository",
+      "description": "只在固定目标检测仓库绘制/更新训练图、对比图、热力图、图例或论文图时应用其统一调色板。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "目标仓库绘图约定",
+        "其 Python/Matplotlib 绘图入口"
+      ],
+      "route_notes": "项目专属颜色不得复制成其他仓库的全局配色规则。",
+      "capabilities": [
+        "project-visual-style",
+        "chart-palette",
+        "figure-consistency"
+      ]
+    },
+    {
+      "name": "yolo-pcb-readme-maintainer",
+      "category": "project-maintenance",
+      "scope": "project_specific: one named detector repository",
+      "description": "在固定目标检测仓库维护训练、数据处理、分割、分析、导出和清理；始终先读该项目 README 并更新维护记录。",
+      "source_kind": "local_authored",
+      "upstream": null,
+      "dependencies": [
+        "目标仓库 README",
+        "实际源码/配置/数据",
+        "该项目现有构建或验证入口"
+      ],
+      "route_notes": "只作用于其指定仓库；其它代码库采用各自 README-first 规则。",
+      "capabilities": [
+        "project-maintenance",
+        "readme-first",
+        "repository-validation"
+      ]
+    }
+  ]
+}

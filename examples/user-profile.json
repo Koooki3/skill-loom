@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "fixture": true,
+  "purpose": "Research and engineering with source-grounded documents",
+  "required_capabilities": ["source-notes", "reproducible-experiments", "skill-maintenance"],
+  "weights": {"task_fit": 0.35, "evidence": 0.3, "maintainability": 0.15, "efficiency": 0.1, "portability": 0.1},
+  "budgets": {"active_skills": 45, "description_chars": 6000, "repair_rounds": 2},
+  "preferences": {"language": "user-selected", "output_root": "user-selected", "external_actions": "task-authorized-only"},
+  "observation_scope": "explicit local files only; no background collection",
+  "host": {"name": "user-selected", "version": "record-before-adoption", "features": "probe-before-use"},
+  "notes": "Illustrative editable budgets and weights, not measured optimal defaults. Keep a real profile outside the public repository."
+}

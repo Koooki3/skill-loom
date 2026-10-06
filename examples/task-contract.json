@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "fixture": true,
+  "task": "Summarize supplied source pages without invented citations",
+  "route": "SOLO",
+  "write_owner": "main agent",
+  "allowed_outputs": ["task-output/notes.md", "task-output/evidence.json"],
+  "acceptance": ["Every factual source claim has a supplied page", "Missing source evidence is stated", "Original files remain intact"],
+  "negative_case": "A general greeting should not activate this skill",
+  "held_out_case": "A supplied page contains an unreadable formula",
+  "repair_budget": {"max_rounds": 2, "on_exhaustion": "report unresolved; never mark pass"},
+  "external_actions": "none"
+}

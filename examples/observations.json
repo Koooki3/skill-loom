@@ -1,0 +1,7 @@
+{
+  "fixture": true,
+  "tasks": [
+    {"required_capabilities": ["source-notes"], "outcome": "fail", "cause": "skill", "evidence_ref": "fixture-missing-reference"},
+    {"required_capabilities": ["reproducible-experiments"], "outcome": "fail", "cause": "environment", "evidence_ref": "fixture-missing-runtime"}
+  ]
+}

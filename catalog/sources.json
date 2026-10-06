@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "observed_at": "2026-10-06",
+  "sources": [
+    {
+      "repository": "xstongxue/best-skills",
+      "commit": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+      "license_hint": "Apache-2.0",
+      "role": "candidate-source",
+      "license_note": "Inspect the selected skill and its retained license before redistribution."
+    },
+    {
+      "repository": "openai/skills",
+      "commit": "49f948faa9258a0c61caceaf225e179651397431",
+      "license_hint": null,
+      "role": "candidate-source",
+      "license_note": "Inspect the selected skill and its retained license before redistribution."
+    },
+    {
+      "repository": "anthropics/skills",
+      "commit": "683bc88e56f3e09ba94f7055977f3d3aa499f202",
+      "license_hint": null,
+      "role": "candidate-source",
+      "license_note": "Inspect the selected skill and its retained license before redistribution."
+    },
+    {
+      "repository": "vercel-labs/agent-skills",
+      "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "license_hint": null,
+      "role": "candidate-source",
+      "license_note": "Inspect the selected skill and its retained license before redistribution."
+    },
+    {
+      "repository": "VoltAgent/awesome-agent-skills",
+      "commit": "94819ad66a3f3e574fdbc3651fc5973d5f46ff8b",
+      "license_hint": "MIT",
+      "role": "discovery-index",
+      "license_note": "Inspect the selected skill and its retained license before redistribution."
+    },
+    {
+      "repository": "addyosmani/web-quality-skills",
+      "commit": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "license_hint": "MIT",
+      "role": "candidate-source",
+      "license_note": "Inspect the selected skill and its retained license before redistribution."
+    },
+    {
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "commit": "92ace75ac21efe19a620434e0ca4e356081fe807",
+      "license_hint": "MIT",
+      "role": "candidate-source",
+      "license_note": "Inspect the selected skill and its retained license before redistribution."
+    }
+  ]
+}

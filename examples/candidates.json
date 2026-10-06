@@ -1,0 +1,15 @@
+{
+  "fixture": true,
+  "candidates": [
+    {
+      "id": "example-source-notes",
+      "commit": "0000000000000000000000000000000000000000",
+      "capabilities": ["source-notes"],
+      "license_review": "unreviewed",
+      "permissions_review": "unreviewed",
+      "behavior_test": "unverified",
+      "ratings": {"task_fit": 3, "evidence": 1, "maintainability": 2},
+      "evidence_refs": {"task_fit": "fixture-task-contract", "evidence": "fixture-static-only", "maintainability": "fixture-small-entrypoint"}
+    }
+  ]
+}

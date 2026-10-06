@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Skill Loom icon">
+<rect width="256" height="256" rx="54" fill="#F3F0E8"/>
+<path d="M64 50v106c0 29 22 50 50 50h68" fill="none" stroke="#172632" stroke-width="29" stroke-linecap="square"/>
+<path d="M50 94h106c28 0 50 22 50 50v52" fill="none" stroke="#147D7A" stroke-width="29" stroke-linecap="square"/>
+<path d="M108 50v66c0 17 13 30 30 30h68" fill="none" stroke="#DC593A" stroke-width="29" stroke-linecap="square"/>
+<path d="M64 124v34" fill="none" stroke="#172632" stroke-width="29"/>
+</svg>
