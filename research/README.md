@@ -27,3 +27,9 @@ pandoc research/paper.md --standalone --from=markdown+autolink_bare_uris --to=la
 ```
 
 For the reading PDF, separately install `reportlab` and run `python scripts/render_paper.py`. This small renderer supports the manuscript's present constructs and checks for a serif font with Greek glyphs. It is not a general Markdown renderer; adding equations requires updating and visually checking that path. Artifact-generation libraries and Pandoc are optional, not dependencies of the runtime CLI. Keep source and derived documents synchronized when changing the manuscript.
+
+## Patch supplements
+
+[Receipt-validation regression report](weekly-2026-10-09.md) records v0.1.1.
+The source register now includes one incremental paper in addition to the original fifteen.
+The original manuscript/PDF retains its 2026-10-06 scope and results.

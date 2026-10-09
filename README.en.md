@@ -59,3 +59,5 @@ repository. No background monitoring, cloud service or model API is enabled.
 
 See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
 [maintenance](docs/releasing-and-governance.md) and [license](LICENSE).
+
+[v0.1.1 receipt-input fix and regression report](research/weekly-2026-10-09.md).

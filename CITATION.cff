@@ -4,8 +4,8 @@ type: software
 title: "Skill Loom: Evidence-driven skill evolution"
 authors:
   - name: "Skill Loom contributors"
-version: 0.1.0
-date-released: 2026-10-06
+version: 0.1.1
+date-released: 2026-10-09
 license: MIT
 repository-code: "https://github.com/Koooki3/skill-loom"
 url: "https://github.com/Koooki3/skill-loom"

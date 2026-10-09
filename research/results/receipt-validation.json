@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "version": "0.1.1",
+  "observed_at": "2026-10-09",
+  "fixture": true,
+  "baseline": {
+    "top_level_json": [],
+    "cli_exit": 1,
+    "hook_exit": 1,
+    "uncaught_error": "AttributeError"
+  },
+  "patched": {
+    "cli_exit": 2,
+    "cli_error_type": "LoomError",
+    "hook_exit": 1,
+    "hook_result": "explicit-unverified-message"
+  },
+  "new_regression_tests": 6,
+  "local_suite": {
+    "os": "Windows",
+    "python": "3.12",
+    "total": 49,
+    "passed": 47,
+    "skipped": 2
+  },
+  "held_out": false,
+  "paper_replication": false,
+  "model_quality_measured": false
+}

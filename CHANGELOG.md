@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 — 2026-10-09
+
+- Validate receipt objects, check IDs, artifact collections and digest fields before
+  reading evidence. Malformed input produces a structured CLI error and an explicit
+  unverified Stop-hook result instead of an uncaught traceback.
+- Add six regression tests for malformed input, pre-read validation and entrypoints.
+- Add an incremental ClaimReceipt literature note and weekly regression report.
+  Valid receipt verdicts and schema 1 remain unchanged.
+
 ## 0.1.0 — 2026-10-06
 
 - Initial local lifecycle toolkit, source discovery and pinned staging.

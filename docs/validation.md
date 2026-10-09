@@ -66,3 +66,7 @@ GitHub Actions已在提交 `b4cf24f5517c23dbc6c62df4704f4e8e1b3c017c` 完成[首
 当前未验证：原生Codex/Claude Code Stop-hook运行、Claude Code本地发现、多用户托管、macOS运行、任意模型任务提升、长期并发与存储故障恢复。适配指南区分官方能力、项目约定和本机观察。CLI的hook脚本、单元fixture通过不等于宿主实际调用已通过。
 
 论文是系统技术报告，非同行评审论文。19条引用采用连续数字编号，15篇论文的固定版本、阅读章节和反证见[研究来源](../research/references.json)与[工程来源](../research/engineering-evidence.md)。
+
+## v0.1.1 补丁验证（2026-10-09）
+
+新增6项 receipt 输入回归；本机 Windows / Python 3.12 共49项：47通过、2跳过。隔离 demo 的精确回退、重新应用和无变化退出通过。旧版43项结果保留为历史记录。跨平台补丁 CI 在对应发布提交另行核验。见[补充报告](../research/weekly-2026-10-09.md)。CLI 对结构错误输出 JSON 并退出2；Stop脚本提示验收未验证并退出1。这里验证的是脚本入口，未验证宿主原生 hook。

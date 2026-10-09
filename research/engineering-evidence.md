@@ -24,3 +24,15 @@ RQ3：基于真实任务的候选准入、最小组合和退役机制，能否�
 第一轮原型提供静态盘点、固定来源暂存、事务和回退。跨宿主检查暴露“允许结束”与“任务通过”应分开，于是Stop上限保留失败状态。运行发现接口暴露GitHub仓库元数据URL尾斜杠造成错误，修正并增加契约回归。对验收设计的复核发现仅有artifact哈希会接受另一轮旧证据，于是加入run/candidate/time绑定。
 
 这些修改来自实际论证和测试；并不是某篇论文的复现，也没有实现GEPA、SkillRL训练或EvoSkill完整搜索算法。后续研究应优先补上真实任务质量与成本评测，而不是增加没有证据价值的新门控层。
+
+
+## Incremental review — 2026-10-09 / v0.1.1
+
+[R16: ClaimReceipt](https://arxiv.org/html/2609.01992v1), Peiying Zhu and Sidi Chang,
+2 September 2026, was reviewed at Abstract, §2.1, §3.1, §5.4 and §6.
+It distinguishes claim sufficiency, experiment coverage and transport integrity.
+Its evaluation uses a bounded transaction domain and designed faults; it does not
+establish a universal receipt contract. We adopt the distinction as a design
+constraint, not its claimed performance or full verifier. See the
+[weekly regression report](weekly-2026-10-09.md). This addition does not revise the
+original manuscript's fifteen-paper cutoff or imply paper replication.

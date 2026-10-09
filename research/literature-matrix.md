@@ -124,3 +124,15 @@
 - **来源角色**：论文支撑机制和实验论据；官方格式与产品文档支撑包装/API 事实；工程博客支撑实践取舍。三者不能互相替代。本目录的 [engineering-evidence.md](engineering-evidence.md) 单独维护工程来源。
 - **当前主张**：Skill Loom 没有在本综述中完成上述论文的复现，没有提供跨模型真实任务提升证据，也没有建立对任意用户或任意 harness 的普遍保证。后续论文和博客应标明工程原型、已测软件性质、设计提议与尚未测的模型效果。
 
+
+
+## Incremental review — 2026-10-09 / v0.1.1
+
+[R16: ClaimReceipt](https://arxiv.org/html/2609.01992v1), Peiying Zhu and Sidi Chang,
+2 September 2026, was reviewed at Abstract, §2.1, §3.1, §5.4 and §6.
+It distinguishes claim sufficiency, experiment coverage and transport integrity.
+Its evaluation uses a bounded transaction domain and designed faults; it does not
+establish a universal receipt contract. We adopt the distinction as a design
+constraint, not its claimed performance or full verifier. See the
+[weekly regression report](weekly-2026-10-09.md). This addition does not revise the
+original manuscript's fifteen-paper cutoff or imply paper replication.
