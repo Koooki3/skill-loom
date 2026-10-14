@@ -32,6 +32,16 @@ python -m skillloom suggest --inventory '<private-state>/inventory.json' --event
 
 建议为一次值得处理的事件，在私有工作目录记录：任务要求、期望产物、实际失败、可复现输入、本地证据位置、是工具/环境/skill/源材料哪一层的问题，以及最小修复。保留原始证据但只共享必要的匿名化复现输入。
 
+`observe-claude` 同样只汇总结构：`Skill` 工具调用是宿主的结构化事件，所以每个技能的调用数是精确的；另有子 agent 派发数和观察日期窗口。`observe-codex` 额外统计打开 `skills/<name>/SKILL.md` 的命令（`skill_md_reads`），它只是加载信号：审计和安装也会读这些文件，不能当作任务使用或成功。
+
+`usage` 把宿主清单和观察报告合并，按宿主分别判断：`used`（Claude 的精确调用）、`load-signal`（Codex 的读取）、`unobserved`、`no-observation`。只有观察窗口同时达到 `--min-sessions`（默认10）和 `--min-days`（默认7）后才列出“复核停用”候选，按描述占用从大到小排序，受保护技能不入列，且只建议移出发现目录、不删除。窗口不足时一个候选也不给：几天的记录不足以说明一个技能没用。
+
+```bash
+python -m skillloom observe-claude --log '<transcript.jsonl>' --out '<private-state>/obs-claude.json'
+python -m skillloom usage --inventory claude='<private-state>/inventory-claude.json' --inventory codex='<private-state>/inventory-codex.json' \
+  --observation '<private-state>/obs-claude.json' --observation '<private-state>/obs-codex.json' --protect skill-lifecycle --out '<private-state>/usage.json'
+```
+
 ## 持续发现优质开源资源
 
 从 [best-skills](https://github.com/xstongxue/best-skills) 和 [awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) 等索引发现候选，再回到实际维护仓库核对。索引中的链接不继承索引的许可证、可信度或兼容性。星标数和最近提交只是线索。
@@ -100,5 +110,7 @@ python -m skillloom rollback --transaction '<transaction-directory>'
 ## 有节奏地维护
 
 维护由证据触发：重复故障、明确新任务、上游相关修复、宿主版本改变、项目结束或已证明能力被替代。可按周查看事件、按月评审来源，但这只是建议；本项目不会创建定时任务。
+
+一次每周迭代的顺序：`observe-claude` / `observe-codex` → `inventory` → `usage`（窗口够再看停用候选）→ `recommend`（新增项目标记带来的缺口）→ 人工复核 → `stage` / `plan` / `apply`。人工判断必须以这些输出为依据：一次“这些技能与项目无关”的手工移除，曾被 `recommend` 发现的 `react`、`next`、`mcp` 依赖推翻。
 
 每轮维护以以下三种结果之一结束：有证据支持的变更并完成验收；没有必要变更；存在明确阻塞和下一步。达到重试/成本上限时记录未完成，不积累无限 hook 循环。没有变化时保持安静，不制造“更新报告”来替代进展。

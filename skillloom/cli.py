@@ -48,6 +48,23 @@ def parser():
     p = sub.add_parser("observe-codex", help="Aggregate explicitly selected local rollouts; export no text")
     p.add_argument("--log", action="append", required=True)
     p.add_argument("--out", required=True)
+    p = sub.add_parser("observe-claude", help="Aggregate explicitly selected Claude Code transcripts; export no text")
+    p.add_argument("--log", action="append", required=True)
+    p.add_argument("--out", required=True)
+    p = sub.add_parser("usage", help="Per-host skill usage from host inventories and observation reports; proposes review only")
+    p.add_argument("--inventory", action="append", required=True, metavar="HOST=REPORT")
+    p.add_argument("--observation", action="append", required=True)
+    p.add_argument("--protect", action="append", default=[])
+    p.add_argument("--min-sessions", type=int, default=10)
+    p.add_argument("--min-days", type=int, default=7)
+    p.add_argument("--out", required=True)
+    p = sub.add_parser("recommend", help="Recommend catalog skills for this machine's projects and hosts; install nothing")
+    p.add_argument("--profile", help="Optional; neutral defaults are used for a first deployment")
+    p.add_argument("--catalog", required=True)
+    p.add_argument("--inventory", action="append", required=True, metavar="HOST=REPORT")
+    p.add_argument("--project-root", action="append", required=True)
+    p.add_argument("--allow-scoped", action="store_true")
+    p.add_argument("--out", required=True)
     p = sub.add_parser("suggest", help="Suggest investigation candidates, never edits")
     p.add_argument("--inventory", required=True)
     p.add_argument("--events", required=True)
@@ -83,6 +100,17 @@ def parser():
     return cli
 
 
+def host_reports(pairs):
+    """Parse repeated HOST=REPORT arguments into {host: inventory report}."""
+    reports = {}
+    for pair in pairs:
+        host, separator, path = pair.partition("=")
+        if not separator or not host or not path or host in reports:
+            raise LoomError("Use HOST=REPORT once per host")
+        reports[host] = read_json(path)
+    return reports
+
+
 def dispatch(args):
     command = args.command
     if command == "inventory":
@@ -115,6 +143,18 @@ def dispatch(args):
     elif command == "observe-codex":
         from .evidence import observe_codex
         result = observe_codex(args.log)
+    elif command == "observe-claude":
+        from .evidence import observe_claude
+        result = observe_claude(args.log)
+    elif command == "usage":
+        from .usage import usage_report
+        result = usage_report(host_reports(args.inventory), [read_json(p) for p in args.observation],
+                              args.protect, args.min_sessions, args.min_days)
+    elif command == "recommend":
+        from .recommend import recommend
+        from .strategy import default_profile
+        result = recommend(read_json(args.profile) if args.profile else default_profile(), read_json(args.catalog), host_reports(args.inventory),
+                           args.project_root, args.allow_scoped)
     elif command == "suggest":
         from .evidence import suggest
         result = suggest(read_json(args.inventory), read_json(args.events), args.minimum_failures)
@@ -143,7 +183,7 @@ def dispatch(args):
         raise LoomError("Unknown command")
     if getattr(args, "out", None):
         write_json(args.out, result)
-    display = {k: v for k, v in result.items() if k not in {"skills", "before", "after", "changes", "provenance", "files", "deleted_files"}}
+    display = {k: v for k, v in result.items() if k not in {"skills", "before", "after", "changes", "provenance", "files", "deleted_files", "hosts", "recommended"}}
     if command in {"plan", "cleanup-plan"}:
         display["review_digest"] = object_digest(result)
     print(json.dumps(display, ensure_ascii=False, indent=2))

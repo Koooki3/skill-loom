@@ -48,6 +48,13 @@ def validate_profile(profile):
     return profile
 
 
+def default_profile():
+    """Neutral profile for a first deployment on a machine that has none; the user can tighten it later."""
+    return {"schema": 1, "required_capabilities": [],
+            "weights": {key: 0.2 for key in sorted(DIMENSIONS)},
+            "budgets": {"active_skills": 40, "description_chars": 12000, "repair_rounds": 2}}
+
+
 def doctor(profile):
     validate_profile(profile)
     return {"schema": 1, "platform": platform.system(), "python": platform.python_version(),

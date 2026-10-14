@@ -1,8 +1,10 @@
 """Small, explicit event vocabulary; no prompts, output bodies, or user paths."""
 
 from collections import Counter, defaultdict
+from datetime import date
 import json
 from pathlib import Path
+import re
 
 from .common import LoomError, now, valid_name
 
@@ -46,6 +48,31 @@ def summarize_events(path):
             "limits": "Curated observations, not causal evidence. Unobserved skills are not candidates for automatic removal."}
 
 
+SKILL_MD_READ = re.compile(r"skills/([a-z0-9]+(?:-[a-z0-9]+)*)/SKILL\.md")
+SKILL_REF = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*(?::[a-z0-9]+(?:-[a-z0-9]+)*)?")
+AGENT_TYPE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,39}")
+
+
+def _day(stamp):
+    """Calendar day of an ISO timestamp, or None; times of day and zones are not kept."""
+    try:
+        return date.fromisoformat(stamp[:10]) if isinstance(stamp, str) else None
+    except ValueError:
+        return None
+
+
+def _window(days):
+    days = sorted(days)
+    if not days:
+        return {"first_day": None, "last_day": None, "span_days": 0}
+    return {"first_day": days[0].isoformat(), "last_day": days[-1].isoformat(),
+            "span_days": (days[-1] - days[0]).days + 1}
+
+
+def _skill_table(calls, sessions):
+    return {name: {"calls": calls[name], "sessions": len(sessions[name])} for name in sorted(calls)}
+
+
 def observe_codex(paths):
     """Read explicit rollout files; export only structural counts and token totals.
 
@@ -54,7 +81,8 @@ def observe_codex(paths):
     """
     counts = Counter()
     usage = []
-    for path in paths:
+    reads, read_sessions, days = Counter(), defaultdict(set), set()
+    for index, path in enumerate(paths):
         latest = None
         with Path(path).open(encoding="utf-8-sig") as handle:
             for line in handle:
@@ -69,8 +97,16 @@ def observe_codex(paths):
                 if not isinstance(payload, dict):
                     continue
                 kind = item.get("type")
+                day = _day(item.get("timestamp"))
+                if day:
+                    days.add(day)
                 if kind == "response_item" and payload.get("type") in {"function_call", "custom_tool_call"}:
                     counts["tool_calls"] += 1
+                    # A command that opens skills/<name>/SKILL.md is how Codex loads a skill. It is a load
+                    # signal only: audits and installs also read these files.
+                    for name in set(SKILL_MD_READ.findall(json.dumps(payload, ensure_ascii=False))):
+                        reads[name] += 1
+                        read_sessions[name].add(index)
                 if kind == "event_msg" and payload.get("type") in {"task_started", "task_complete", "turn_aborted"}:
                     counts[payload["type"]] += 1
                 if kind == "event_msg" and payload.get("type") == "token_count":
@@ -81,10 +117,63 @@ def observe_codex(paths):
                         latest = value
         if latest is not None:
             usage.append(latest)
-    return {"schema": 1, "observed_at": now(), "file_count": len(paths), "counts": dict(counts),
+    return {"schema": 1, "host": "codex", "observed_at": now(), "file_count": len(paths), "counts": dict(counts),
             "reported_total_tokens_sum": sum(usage) if usage else None,
             "files_with_usage": len(usage), "skill_attribution": "not_inferred",
-            "limits": "Structural local sample; task_complete is a host event, not proof of quality. No raw content exported."}
+            "skill_md_reads": _skill_table(reads, read_sessions), "window": _window(days),
+            "limits": "Structural local sample; task_complete is a host event, not proof of quality. "
+                      "skill_md_reads counts commands that open a SKILL.md: a load signal, not task use or success, "
+                      "and audit or install work also produces it. No raw content exported."}
+
+
+def observe_claude(paths):
+    """Aggregate explicitly selected Claude Code transcripts into structural counts.
+
+    A Skill tool call is a structured host event, so skill attribution here is exact for
+    calls and says nothing about success. Prompts, tool inputs, outputs and paths are never exported.
+    """
+    counts, agents = Counter(), Counter()
+    calls, call_sessions, days = Counter(), defaultdict(set), set()
+    for index, path in enumerate(paths):
+        with Path(path).open(encoding="utf-8-sig") as handle:
+            for line in handle:
+                try:
+                    item = json.loads(line)
+                except json.JSONDecodeError:
+                    counts["malformed_lines"] += 1
+                    continue
+                if not isinstance(item, dict):
+                    continue
+                day = _day(item.get("timestamp"))
+                if day:
+                    days.add(day)
+                message = item.get("message")
+                content = message.get("content") if isinstance(message, dict) else None
+                if item.get("type") == "user" and (isinstance(content, str) or (
+                        isinstance(content, list) and any(isinstance(b, dict) and b.get("type") == "text" for b in content))):
+                    counts["user_turns"] += 1
+                if item.get("type") != "assistant" or not isinstance(content, list):
+                    continue
+                for block in content:
+                    if not isinstance(block, dict) or block.get("type") != "tool_use":
+                        continue
+                    counts["tool_calls"] += 1
+                    arguments = block.get("input") if isinstance(block.get("input"), dict) else {}
+                    if block.get("name") == "Skill":
+                        name = arguments.get("skill")
+                        if isinstance(name, str) and SKILL_REF.fullmatch(name):
+                            calls[name] += 1
+                            call_sessions[name].add(index)
+                        else:
+                            counts["skill_calls_unnamed"] += 1
+                    elif block.get("name") == "Agent":
+                        kind = arguments.get("subagent_type", "default")
+                        agents[kind if isinstance(kind, str) and AGENT_TYPE.fullmatch(kind) else "other"] += 1
+    return {"schema": 1, "host": "claude", "observed_at": now(), "file_count": len(paths), "counts": dict(counts),
+            "skill_attribution": "tool_use:Skill", "skills": _skill_table(calls, call_sessions),
+            "subagent_dispatches": dict(sorted(agents.items())), "window": _window(days),
+            "limits": "Structural local sample. A Skill call shows the skill was loaded, not that the task passed. "
+                      "No raw content, paths or identities exported."}
 
 
 def suggest(inventory_report, event_report, minimum_failures=2):

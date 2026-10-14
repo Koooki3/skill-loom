@@ -53,11 +53,20 @@ python -m skillloom inventory --root '<your-skills-root>' --out '<private-state>
 
 安装本项目附带的 `skills/skill-lifecycle` 时，按[宿主适配](docs/host-adapters.md)选入口，并使用 `plan` / `apply`。如果已有等价维护 skill，优先适配原入口，避免重复触发。第三方目录仅供参考，本仓库不会一键安装全部39项。
 
+首次部署时，让工具按本机项目给出待审队列（不安装；省略 `--profile` 用中性默认值）：
+
+```bash
+python -m skillloom recommend --catalog catalog/local-skills.example.json \
+  --inventory claude='<private-state>/inventory-claude.json' --project-root '<your-project>' --out '<private-state>/recommend.json'
+```
+
 ## 六个问题，一条维护链
 
 | 你遇到的问题 | 项目提供什么 | 命令 / 文档 |
 |---|---|---|
 | 怎样找到值得采用的新技能 | 有范围的公开检索、固定来源变化检查、证据评分 | `scout` · `discover` · `stage` · `rank` |
+| 首次部署装什么 | 按本机项目标记、宿主工具和预算排出待审队列，给出固定提交的 `stage` 命令，不安装 | `recommend` |
+| 装了之后谁在用 | Claude/Codex 分别的使用证据；窗口不够不提退役 | `observe-claude` · `observe-codex` · `usage` |
 | 本地究竟缺什么 | 显式需求、能力提供者、任务失败原因分开 | `observe-codex` · `events` · `gaps` |
 | 技能越来越重复 | 能力重叠候选、用户预算、触发边界与退役流程 | `portfolio` · [路由与协作](docs/routing-and-teams.md) |
 | 不同用户怎么适配 | 私有可编辑profile、小范围试点、环境初筛 | `doctor` · [设计与质量](docs/design-and-quality.md) |

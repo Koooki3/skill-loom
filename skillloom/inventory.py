@@ -5,7 +5,11 @@ from collections import Counter
 from pathlib import Path
 import re
 from urllib.parse import unquote
-import yaml
+try:
+    import yaml
+except ImportError as exc:  # first-run failure seen on a clean interpreter
+    from .common import LoomError
+    raise LoomError("PyYAML is required: run `python -m pip install -e .` in a virtual environment") from exc
 
 from .common import digest, now, valid_name, is_link
 

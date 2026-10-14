@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.2.0 — 2026-10-14
+
+Driven by one real deployment and its first week of local run records (Codex and Claude Code profiles
+of one user): first deployment needed hand-built profiles and hand-checked candidates, and Claude Code
+had no observation path, so later updates had no usage evidence.
+
+- `recommend`: environment-aware first-deployment queue. Scans explicit project roots for markers
+  (manifests, suffix counts, GitHub remote, declared dependencies), maps them to catalog capabilities,
+  reports missing host tools, license caveats, source pinning and budget headroom, and prints the exact
+  `stage` command. Works without a profile (neutral defaults). Installs nothing; fixed-scope skills are
+  excluded unless `--allow-scoped`.
+- `observe-claude`: structural aggregation of Claude Code transcripts. A `Skill` tool call is a structured
+  event, so per-skill call counts are exact; also subagent dispatch counts and the observed day window.
+  No prompts, tool inputs, outputs or paths are exported.
+- `observe-codex` now reports `skill_md_reads` (commands that open `skills/<name>/SKILL.md`) and the day window.
+  This is a load signal only; audit and install work produce it too. `skill_attribution` stays `not_inferred`.
+- `usage`: per-host skill status (`used`, `load-signal`, `unobserved`, `no-observation`) from host
+  inventories plus observation reports. Review candidates for deactivation appear only after the evidence
+  window clears `--min-sessions` and `--min-days`; protected skills are excluded; nothing is changed.
+- A missing PyYAML now fails with an instruction instead of a traceback.
+- 17 regression tests on synthetic fixtures, including the window gate and protection rules.
+
+Evidence limits: a 2–3 day window with 9 Claude and 47 Codex files is far below the default `usage`
+thresholds, so no deactivation was proposed. Matching is a hypothesis for review, not a quality score.
+
 ## 0.1.1 — 2026-10-09
 
 - Validate receipt objects, check IDs, artifact collections and digest fields before
