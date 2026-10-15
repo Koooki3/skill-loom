@@ -42,6 +42,8 @@ python -m skillloom usage --inventory claude='<private-state>/inventory-claude.j
   --observation '<private-state>/obs-claude.json' --observation '<private-state>/obs-codex.json' --protect skill-lifecycle --out '<private-state>/usage.json'
 ```
 
+`usage` 会在汇总前校验报告结构、claude/codex 宿主名称、非负整数计数及成对且顺序正确的 YYYY-MM-DD 日历日期。有文件或日期证据的报告必须显式包含宿主对应的技能计数表，表内记录必须提供 calls 和 sessions。未提供日期的空窗口仍可用于展示，但不会达到停用复核门槛。格式错误会返回结构化错误并以状态码 2 退出，不创建或覆盖 `--out` 文件；请修正输入后重试。
+
 ## 持续发现优质开源资源
 
 从 [best-skills](https://github.com/xstongxue/best-skills) 和 [awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) 等索引发现候选，再回到实际维护仓库核对。索引中的链接不继承索引的许可证、可信度或兼容性。星标数和最近提交只是线索。

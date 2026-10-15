@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Reject malformed `usage` inventory/observation structures, invalid counts and
+  incomplete or reversed date windows with a controlled CLI error. A failed
+  command leaves existing output untouched and creates no new output report.
+- Add synthetic API and CLI regression coverage; valid reports and optional
+  empty observation windows keep their existing behavior.
+
 ## 0.2.0 — 2026-10-14
 
 Driven by one real deployment and its first week of local run records (Codex and Claude Code profiles
