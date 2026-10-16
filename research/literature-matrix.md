@@ -136,3 +136,17 @@ establish a universal receipt contract. We adopt the distinction as a design
 constraint, not its claimed performance or full verifier. See the
 [weekly regression report](weekly-2026-10-09.md). This addition does not revise the
 original manuscript's fifteen-paper cutoff or imply paper replication.
+
+## Incremental review — 2026-10-16 / v0.2.0
+
+| Source | Actual reading | Adopted constraint | Rejected inference |
+|---|---|---|---|
+| R17 CloudEvents v1.0.2 | Terminology; required id/source; Privacy and Security | Scope event identity; protect identifying context | An event ID is not an independent trial |
+| R18 W3C PROV-DM, 2013-04-30 | §5.2 derivation/revision; §5.6 collections | A derived report is not new source membership | No PROV-conformance or disjointness claim |
+| R19 OpenTelemetry Metrics Data Model, accessed 2026-10-16 | Single-Writer; Temporality; Resets and Gaps; Overlap | Make unresolved overlap explicit | Living version not pinned; Overlap is Development; no interpolation of skill counts |
+| R20 Ubbala, arXiv:2609.14017v1, 2026-09-12 | §III–VII | Test replay/order properties under explicit identities | Synthetic contract validation is not field efficacy; no revision-order adoption or replication |
+
+Links, license limits and precise metadata are in the [source register](references.json).
+The [weekly supplement](weekly-2026-10-16.md) explains the implementation and
+counterexamples. The ten-file/seven-day defaults remain a review policy, with
+no statistical confidence claim or inference of skill uselessness.

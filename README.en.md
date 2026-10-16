@@ -35,7 +35,7 @@ directory and never deletes an earlier run.
 - Compare editable user requirements with capabilities and curated task evidence.
 - Rank evidence-graded candidates and flag portfolio overlap for review.
 - Recommend a first-deployment queue from the machine's own projects, host tools and budget (`recommend`); nothing is installed.
-- Aggregate Claude Code and Codex local records into per-host skill usage (`observe-claude`, `observe-codex`, `usage`); deactivation review is proposed only after the evidence window is long enough.
+- Aggregate Claude Code and Codex local records into per-host skill usage (`observe-claude`, `observe-codex`, `usage`); deactivation review requires one report to meet both file-count and elapsed-span thresholds. Repeated input aliases are skipped; aggregate reports with unknown overlap are not added.
 - Plan exact file changes, retain originals, reject drift and roll back safely.
 - Check task/candidate/time-bound evidence receipts with an opt-in bounded Stop hook.
 - Clean only explicitly owned reconstructible caches using reviewed exact-file plans.
@@ -63,3 +63,5 @@ See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
 [maintenance](docs/releasing-and-governance.md) and [license](LICENSE).
 
 [v0.1.1 receipt-input fix and regression report](research/weekly-2026-10-09.md).
+
+[v0.2.0 observation accounting and synthetic comparison](research/weekly-2026-10-16.md). Defaults are review policy, not confidence bounds or proof that an unobserved skill is unnecessary.

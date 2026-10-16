@@ -1,0 +1,424 @@
+{
+  "schema": 1,
+  "date": "2026-10-16",
+  "study": "synthetic-observation-coverage",
+  "baseline_commit": "f3e654ebb25377ed027bdf9aeae4c8edd62c7938",
+  "baseline_version": "0.2.0-unreleased",
+  "candidate_version": "0.2.0",
+  "baseline": {
+    "schema": 1,
+    "study": "synthetic-observation-coverage",
+    "case_count": 12,
+    "contracts_met": 6,
+    "cases": [
+      {
+        "case": "claude-single-under-threshold",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 6,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "claude-duplicate-aggregate",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare",
+            "used"
+          ]
+        },
+        "observed_files": 12,
+        "span_days": 7,
+        "contract_met": false
+      },
+      {
+        "case": "claude-crossed-thresholds",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare",
+            "used"
+          ]
+        },
+        "observed_files": 11,
+        "span_days": 8,
+        "contract_met": false
+      },
+      {
+        "case": "claude-qualifying-control",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "claude-positive-small-report",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 11,
+        "span_days": 8,
+        "contract_met": true
+      },
+      {
+        "case": "claude-repeated-input",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": false
+      },
+      {
+        "case": "codex-single-under-threshold",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 6,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "codex-duplicate-aggregate",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare",
+            "used"
+          ]
+        },
+        "observed_files": 12,
+        "span_days": 7,
+        "contract_met": false
+      },
+      {
+        "case": "codex-crossed-thresholds",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare",
+            "used"
+          ]
+        },
+        "observed_files": 11,
+        "span_days": 8,
+        "contract_met": false
+      },
+      {
+        "case": "codex-qualifying-control",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "codex-positive-small-report",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 11,
+        "span_days": 8,
+        "contract_met": true
+      },
+      {
+        "case": "codex-repeated-input",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": false
+      }
+    ],
+    "source_sha256": {
+      "skillloom/evidence.py": "e845f089eee5e849554008c02de54e2e1ba6fe9c15a113a5e52a09187f82effe",
+      "skillloom/usage.py": "ee3cc59e2e9e41e0475aeba90117386f6dc8d079380d10e5656c4c63c4adc031"
+    },
+    "limits": "Development-selected contract fixtures, not held-out trials or model-quality evidence. File aliases are tested separately in the unit suite. Copied or overlapping logical sessions inside different files are not deduplicated. Thresholds are review policy, not confidence bounds."
+  },
+  "candidate": {
+    "schema": 1,
+    "study": "synthetic-observation-coverage",
+    "case_count": 12,
+    "contracts_met": 12,
+    "cases": [
+      {
+        "case": "claude-single-under-threshold",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 6,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "claude-duplicate-aggregate",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 6,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "claude-crossed-thresholds",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 10,
+        "span_days": 8,
+        "contract_met": true
+      },
+      {
+        "case": "claude-qualifying-control",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "claude-positive-small-report",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "claude-repeated-input",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 1,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "codex-single-under-threshold",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 6,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "codex-duplicate-aggregate",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 6,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "codex-crossed-thresholds",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 10,
+        "span_days": 8,
+        "contract_met": true
+      },
+      {
+        "case": "codex-qualifying-control",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "codex-positive-small-report",
+        "expected": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "actual": {
+          "window_sufficient": true,
+          "review_candidates": [
+            "rare"
+          ]
+        },
+        "observed_files": 10,
+        "span_days": 7,
+        "contract_met": true
+      },
+      {
+        "case": "codex-repeated-input",
+        "expected": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "actual": {
+          "window_sufficient": false,
+          "review_candidates": []
+        },
+        "observed_files": 1,
+        "span_days": 7,
+        "contract_met": true
+      }
+    ],
+    "source_sha256": {
+      "skillloom/evidence.py": "b2c915b1da16b540d5764454e9efd5151283c45ba730ff0f5fd7915a94d1ae64",
+      "skillloom/usage.py": "7aeb430a99d8c2dfda1880f3d76ba64f478f3f6054fc19b471077348f40c96ca"
+    },
+    "limits": "Development-selected contract fixtures, not held-out trials or model-quality evidence. File aliases are tested separately in the unit suite. Copied or overlapping logical sessions inside different files are not deduplicated. Thresholds are review policy, not confidence bounds."
+  },
+  "environment": {
+    "os": "Windows",
+    "python": "3.12.8",
+    "credential_environment": "cleared; synthetic fixtures only"
+  },
+  "limits": "Selected deterministic contract cases, not independent trials, model benchmarks or measured token/cost improvements. No raw runtime data."
+}

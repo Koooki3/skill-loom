@@ -2,9 +2,9 @@
   "schema_version": 1,
   "title": "Skill Loom — primary literature reference register",
   "language": "zh-CN",
-  "accessed": "2026-10-09",
-  "cutoff": "2026-10-09",
-  "scope": "15 original primary papers plus one incremental receipt-verification source; the original version 0.1 manuscript retains its original cutoff. Source claims are not Skill Loom experimental results.",
+  "accessed": "2026-10-16",
+  "cutoff": "2026-10-16",
+  "scope": "15 original primary papers plus two incremental papers and three primary specifications; the original version 0.1 manuscript retains its original cutoff. Source claims are not Skill Loom experimental results.",
   "reading_status_vocabulary": {
     "full_text_sections_read": "已打开并阅读列出的正文方法、评价或局限章节；不表示逐页读完所有附录。",
     "abstract_only": "仅核对摘要与元数据；本版没有以此状态纳入的论文。",
@@ -677,6 +677,123 @@
       },
       "reproduction_status": "not_reproduced",
       "verification_note": "Incremental source for v0.1.1; no claim to implement its semantic replay, signatures or prospective coverage protocol. arXiv non-exclusive distribution license does not relicense the paper as MIT."
+    },
+    {
+      "label": "R17",
+      "id": "cloudevents102",
+      "title": "CloudEvents - Version 1.0.2",
+      "author": "CNCF CloudEvents project",
+      "year": 2022,
+      "version": "v1.0.2",
+      "version_date": "2022-02-05",
+      "date_note": "Official release announcement date; roadmap completion is separately dated February 3.",
+      "url": "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md",
+      "metadata_url": "https://cloudevents.io/",
+      "accessed": "2026-10-16",
+      "source_kind": "primary_specification",
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "Terminology",
+        "Required attributes id and source",
+        "Optional time",
+        "Privacy and Security"
+      ],
+      "reproduction_status": "not_applicable",
+      "license_note": "Apache-2.0 specification repository; cited/paraphrased, no text or code vendored.",
+      "verification_note": "Scoped event identity informs the unit distinction. No CloudEvents implementation or independence guarantee is claimed."
+    },
+    {
+      "label": "R18",
+      "id": "prov_dm2013",
+      "title": "PROV-DM: The PROV Data Model",
+      "author": "W3C Provenance Working Group; Luc Moreau and Paolo Missier, editors",
+      "editors": [
+        "Luc Moreau",
+        "Paolo Missier"
+      ],
+      "year": 2013,
+      "version": "W3C Recommendation 2013-04-30",
+      "version_date": "2013-04-30",
+      "url": "https://www.w3.org/TR/2013/REC-prov-dm-20130430/",
+      "accessed": "2026-10-16",
+      "source_kind": "primary_specification",
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "5.2.1-5.2.3 Derivation, Revision, Quotation",
+        "5.4 Bundles",
+        "5.5 Specialization and Alternate",
+        "5.6 Collections and Membership",
+        "5.7.1 Identifier"
+      ],
+      "reproduction_status": "not_applicable",
+      "license_note": "W3C document-use rules; cite and paraphrase, not relicensed as project MIT material.",
+      "verification_note": "Used to distinguish derivation and source membership. No RDF implementation or PROV-conformance claim."
+    },
+    {
+      "label": "R19",
+      "id": "otel_metrics_living_20261016",
+      "title": "OpenTelemetry Metrics Data Model",
+      "author": "OpenTelemetry project",
+      "year": null,
+      "version": "Living specification accessed 2026-10-16; fixed release not verified",
+      "url": "https://opentelemetry.io/docs/specs/otel/metrics/data-model/",
+      "accessed": "2026-10-16",
+      "source_kind": "primary_specification",
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "Overview",
+        "Event Model",
+        "OTLP data model",
+        "Single-Writer",
+        "Temporality",
+        "Resets and Gaps",
+        "Overlap"
+      ],
+      "section_status": {
+        "Single-Writer": "Stable",
+        "Temporality": "Stable",
+        "Resets and Gaps": "Development",
+        "Overlap": "Development"
+      },
+      "reproduction_status": "not_applicable",
+      "license_note": "Apache-2.0 specification repository; no material vendored.",
+      "verification_note": "Read rendered living document. A fixed v1.55.0 retrieval was unavailable; do not label this reading as that snapshot. Overlap guidance is engineering precedent, not an efficacy result or skill-count interpolation rule."
+    },
+    {
+      "label": "R20",
+      "id": "ubbala_dtr2026",
+      "title": "Deterministic Temporal Reconciliation for Effective-Dated Identity Lifecycle Events",
+      "author": "Pramod Ubbala",
+      "authors": [
+        "Pramod Ubbala"
+      ],
+      "authors_complete": true,
+      "year": 2026,
+      "arxiv_id": "2609.14017",
+      "version": "v1",
+      "first_submitted": "2026-09-12",
+      "version_date": "2026-09-12",
+      "url": "https://arxiv.org/abs/2609.14017v1",
+      "metadata_url": "https://arxiv.org/abs/2609.14017",
+      "full_text_url": "https://arxiv.org/html/2609.14017v1",
+      "accessed": "2026-10-16",
+      "source_kind": "primary_paper",
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "III Problem Model and Assumptions A1-A5",
+        "IV Reconciliation Algorithm and Properties",
+        "V Experimental Evaluation",
+        "VI-D Relationship to Exactly-Once Processing",
+        "VII Threats to Validity and Limitations"
+      ],
+      "source_location": {
+        "how": "III-IV",
+        "what": "V",
+        "limits": "V-F; VI-D; VII"
+      },
+      "reproduction_status": "not_reproduced",
+      "license_note": "arXiv perpetual non-exclusive distribution license; not a license to relicense paper/code as MIT.",
+      "verification_note": "Recent preprint, not established as accepted or independently replicated. Synthetic generator and method share a semantic contract. Adopt replay/order test properties, not latest-revision semantics or reported performance."
     }
   ]
 }

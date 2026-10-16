@@ -34,7 +34,7 @@ python -m skillloom suggest --inventory '<private-state>/inventory.json' --event
 
 `observe-claude` 同样只汇总结构：`Skill` 工具调用是宿主的结构化事件，所以每个技能的调用数是精确的；另有子 agent 派发数和观察日期窗口。`observe-codex` 额外统计打开 `skills/<name>/SKILL.md` 的命令（`skill_md_reads`），它只是加载信号：审计和安装也会读这些文件，不能当作任务使用或成功。
 
-`usage` 把宿主清单和观察报告合并，按宿主分别判断：`used`（Claude 的精确调用）、`load-signal`（Codex 的读取）、`unobserved`、`no-observation`。只有观察窗口同时达到 `--min-sessions`（默认10）和 `--min-days`（默认7）后才列出“复核停用”候选，按描述占用从大到小排序，受保护技能不入列，且只建议移出发现目录、不删除。窗口不足时一个候选也不给：几天的记录不足以说明一个技能没用。
+`usage` 把宿主清单和观察报告合并，按宿主分别判断：`used`（Claude 的精确调用）、`load-signal`（Codex 的读取）、`unobserved`、`no-observation`。只有同一份观察报告同时达到 `--min-files`（默认10个输入文件）和 `--min-days`（默认7天首尾跨度）后才列出“复核停用”候选，按描述占用从大到小排序，受保护技能不入列，且只建议移出发现目录、不删除。这是人工复核政策，不是统计置信度、连续监测证明或技能无用的结论。`--min-sessions` 是保留的旧参数别名，实际计数单位仍为文件。
 
 ```bash
 python -m skillloom observe-claude --log '<transcript.jsonl>' --out '<private-state>/obs-claude.json'
@@ -43,6 +43,12 @@ python -m skillloom usage --inventory claude='<private-state>/inventory-claude.j
 ```
 
 `usage` 会在汇总前校验报告结构、claude/codex 宿主名称、非负整数计数及成对且顺序正确的 YYYY-MM-DD 日历日期。有文件或日期证据的报告必须显式包含宿主对应的技能计数表，表内记录必须提供 calls 和 sessions。未提供日期的空窗口仍可用于展示，但不会达到停用复核门槛。格式错误会返回结构化错误并以状态码 2 退出，不创建或覆盖 `--out` 文件；请修正输入后重试。
+
+两个观察命令会在本次显式选择的输入中，按解析后的文件系统身份跳过重复路径、路径别名和硬链接，输出 `duplicate_inputs_skipped` 与 `counting_unit`。不同文件中的复制内容、同一会话的不同快照或文件内重复事件仍可能被重复计入；`sessions` 字段只是“出现该信号的输入文件数”，不是经核实的独立会话或试验。日期首尾给出的是经过天数，不是有记录的日期数或连续覆盖。
+
+多份报告没有来源成员信息，不能证明互不重叠。`usage` 不相加文件数、不拼接日期窗口，也不相加技能调用；`observed_files`、`span_days` 和每项 calls/sessions 分别取报告中的最大值，不能当作去重后的总量。`window_sufficient` 仍要求同一份报告同时过两项门槛，不能用两个展示最大值重算。任意报告的正向使用信号都保留，包括未达到门槛的小报告。`reports_supplied`/`qualifying_reports` 计数的是传入的汇总报告，不是独立样本。
+
+若多个小报告确实来自不同输入，请显式选择全部文件重新生成一份观察，而不是降低阈值或相加旧报告。旧 schema 1 报告可读，但其 file_count 可能已含重复路径，应重新生成再用于复核。见[计数合同与回归研究](../research/weekly-2026-10-16.md)。
 
 ## 持续发现优质开源资源
 
@@ -116,3 +122,5 @@ python -m skillloom rollback --transaction '<transaction-directory>'
 一次每周迭代的顺序：`observe-claude` / `observe-codex` → `inventory` → `usage`（窗口够再看停用候选）→ `recommend`（新增项目标记带来的缺口）→ 人工复核 → `stage` / `plan` / `apply`。人工判断必须以这些输出为依据：一次“这些技能与项目无关”的手工移除，曾被 `recommend` 发现的 `react`、`next`、`mcp` 依赖推翻。
 
 每轮维护以以下三种结果之一结束：有证据支持的变更并完成验收；没有必要变更；存在明确阻塞和下一步。达到重试/成本上限时记录未完成，不积累无限 hook 循环。没有变化时保持安静，不制造“更新报告”来替代进展。
+
+推荐结果中的 `stage_argv` 是参数数组；调用方替换目标目录占位符后，应直接作为进程参数传入，不要拼接成 shell 字符串。仓库名和固定路径先按 stage 的约束校验。对空格、引号或 shell 元字符等仍合法的目录名，只提供数组并标记 `stage-argv-only`；简单路径另给含带引号占位符的 `stage_command` 模板。模板需要复核并替换占位符后才可执行。普通 Git 目录和 linked worktree 的 gitdir/commondir 可只读提取远端标记；不会启动 Git 或执行配置 includes。

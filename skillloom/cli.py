@@ -55,7 +55,8 @@ def parser():
     p.add_argument("--inventory", action="append", required=True, metavar="HOST=REPORT")
     p.add_argument("--observation", action="append", required=True)
     p.add_argument("--protect", action="append", default=[])
-    p.add_argument("--min-sessions", type=int, default=10)
+    p.add_argument("--min-files", "--min-sessions", dest="min_sessions", type=int, default=10,
+                   help="Minimum input files within one report (legacy --min-sessions alias; not verified sessions)")
     p.add_argument("--min-days", type=int, default=7)
     p.add_argument("--out", required=True)
     p = sub.add_parser("recommend", help="Recommend catalog skills for this machine's projects and hosts; install nothing")

@@ -36,3 +36,19 @@ establish a universal receipt contract. We adopt the distinction as a design
 constraint, not its claimed performance or full verifier. See the
 [weekly regression report](weekly-2026-10-09.md). This addition does not revise the
 original manuscript's fifteen-paper cutoff or imply paper replication.
+
+## Incremental engineering reading — 2026-10-16
+
+CloudEvents, PROV-DM and OpenTelemetry readings are registered as R17–R19 in
+[references.json](references.json); they are primary specifications, not
+additional agent-efficacy papers. Their role in the conservative accounting
+policy is explained in the [weekly supplement](weekly-2026-10-16.md).
+
+The official [OpenAI Build skills](https://learn.chatgpt.com/docs/build-skills)
+organization guidance and [Hooks](https://learn.chatgpt.com/docs/hooks)
+trust section, plus [Claude skills](https://code.claude.com/docs/en/skills)
+frontmatter/invocation and [Hooks](https://code.claude.com/docs/en/hooks)
+common inputs/SubagentStop, were reread. Current documentation does not verify
+this project's native integration. A transcript path is not a sampling-unit
+contract, and a trusted hook definition is not a successful task receipt.
+No host settings or trust policy were changed.

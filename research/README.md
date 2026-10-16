@@ -3,7 +3,7 @@
 - [Manuscript](paper.md): editable, numbered-source systems technical report.
 - [Reading PDF](paper.pdf): generated from the manuscript with ReportLab; not a TeX-compiled PDF.
 - [Standalone LaTeX source](paper.tex): generated from Markdown with Pandoc. The local app compiler could not initialize its platform directories, so TeX compilation is unverified.
-- [Literature matrix](literature-matrix.md) and [machine-readable sources](references.json): fifteen version-pinned primary papers, reading locations, implications and counterevidence.
+- [Literature matrix](literature-matrix.md) and [machine-readable sources](references.json): the original fifteen version-pinned papers plus dated incremental papers/specifications, reading locations, implications and counterevidence.
 - [Engineering evidence](engineering-evidence.md): official engineering material and technical-debt literature.
 - [Executed deterministic study](results/invariants.json) and [anonymized local case](results/local-cycle.anonymized.json).
 - [Proposed behavioral protocol](evaluation-protocol.md): future model-task experiments; no claimed results.
@@ -31,5 +31,7 @@ For the reading PDF, separately install `reportlab` and run `python scripts/rend
 ## Patch supplements
 
 [Receipt-validation regression report](weekly-2026-10-09.md) records v0.1.1.
-The source register now includes one incremental paper in addition to the original fifteen.
+The source register includes dated incremental sources in addition to the original fifteen; source kinds and version limits are explicit.
 The original manuscript/PDF retains its 2026-10-06 scope and results.
+
+[Observation identity and review-coverage supplement](weekly-2026-10-16.md) records v0.2.0, its [synthetic comparison](results/observation-coverage.json), and upstream review. It adds one recent preprint and three primary specifications; the historical manuscript and derived documents are unchanged.

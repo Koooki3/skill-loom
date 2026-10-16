@@ -6,7 +6,8 @@ from pathlib import Path
 import re
 import shutil
 
-from .common import LoomError, now
+from .common import LoomError, now, relative_path
+from .sources import repository
 from .strategy import catalog_items, validate_profile
 
 SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", "build", "dist", ".mypy_cache", ".tox", "site-packages"}
@@ -75,6 +76,20 @@ def _dependencies(root):
     return found
 
 
+def _git_config_text(root):
+    """Read ordinary/linked-worktree Git metadata without launching Git or loading includes."""
+    git_dir = root / ".git"
+    if git_dir.is_file():
+        marker = _manifest_text(git_dir).strip()
+        if not marker.startswith("gitdir: ") or "\n" in marker:
+            return ""
+        git_dir = root / marker[len("gitdir: "):]
+    common = _manifest_text(git_dir / "commondir").strip()
+    if "\n" in common:
+        return ""
+    return _manifest_text((git_dir / common if common else git_dir) / "config")
+
+
 def scan_project(root):
     root = Path(root)
     if not root.is_dir():
@@ -99,7 +114,7 @@ def scan_project(root):
                 suffixes[suffix] = suffixes.get(suffix, 0) + 1
         if truncated:
             break
-    git_config = _manifest_text(root / ".git" / "config")
+    git_config = _git_config_text(root)
     return {"names": names, "suffixes": suffixes, "files": files, "truncated": truncated,
             "github_remote": "github.com" in git_config, "dependencies": _dependencies(root)}
 
@@ -146,7 +161,11 @@ def recommend(profile, catalog, inventories, project_roots, allow_scoped=False):
         if str(item.get("scope", "general")) != "general" and not allow_scoped:
             skipped["scoped"].append(name)
             continue
-        upstream = item.get("upstream") or {}
+        upstream = item.get("upstream")
+        if upstream is None:
+            upstream = {}
+        if not isinstance(upstream, dict):
+            raise LoomError("Catalog upstream must be an object")
         if item.get("source_kind") not in {"pinned_upstream_adaptation", "known_upstream_unpinned"} or not upstream.get("repo"):
             skipped["no_source"].append(name)
             continue
@@ -155,7 +174,11 @@ def recommend(profile, catalog, inventories, project_roots, allow_scoped=False):
         if not matched:
             continue
         weight = sum(2 if c in required else 1 for c in matched)
-        pinned = bool(re.fullmatch(r"[0-9a-f]{40}", upstream.get("ref") or ""))
+        repo, ref = upstream["repo"], upstream.get("ref")
+        if not isinstance(repo, str) or (ref is not None and not isinstance(ref, str)):
+            raise LoomError("Catalog source repository and ref must be strings")
+        repo = repository(repo)
+        pinned = bool(re.fullmatch(r"[0-9a-f]{40}", ref or ""))
         notes = []
         if not pinned:
             notes.append("source-not-pinned")
@@ -171,9 +194,15 @@ def recommend(profile, catalog, inventories, project_roots, allow_scoped=False):
                  "missing_tools": missing_tools, "next_action": "stage-and-review" if pinned else "pin-source-first",
                  "automatic_install": False}
         if pinned:
-            entry["stage_command"] = ("python -m skillloom stage --repo {repo} --commit {ref} --path {path} "
-                                      "--destination <NEW_DIRECTORY>").format(
-                repo=upstream["repo"], ref=upstream["ref"], path=upstream.get("path", ""))
+            path = relative_path(upstream.get("path")).as_posix()
+            # Structured arguments are authoritative. Never join arbitrary catalog text into a shell.
+            entry["stage_argv"] = ["python", "-m", "skillloom", "stage", "--repo=" + repo,
+                                   "--commit", ref, "--path=" + path, "--destination", "<NEW_DIRECTORY>"]
+            if re.fullmatch(r"[A-Za-z0-9_./-]+", path):
+                entry["stage_command"] = (f"python -m skillloom stage --repo={repo} --commit {ref} "
+                                          f"--path={path} --destination '<NEW_DIRECTORY>'")
+            else:
+                notes.append("stage-argv-only")
         recommended.append(entry)
     recommended.sort(key=lambda e: (-e["score"], e["skill"]))
     room = max(budget["active_skills"] - used_skills, 0)
@@ -186,4 +215,6 @@ def recommend(profile, catalog, inventories, project_roots, allow_scoped=False):
             "recommended": recommended, "skipped": {k: sorted(v) for k, v in skipped.items()},
             "limits": "Marker and capability matching is a hypothesis for the first deployment, not a quality judgement. "
                       "Each candidate still needs `stage`, license/permission review and a local behaviour check. "
-                      "Fixed-scope skills are excluded unless --allow-scoped. No paths, file names or manifest text exported."}
+                      "Fixed-scope skills are excluded unless --allow-scoped. No local project paths, arbitrary file names "
+                      "or manifest text exported. Marker names and catalog source paths are intentional. "
+                      "Replace the destination placeholder; use stage_argv as arguments without a shell."}

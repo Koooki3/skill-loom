@@ -324,3 +324,13 @@ python -m skillloom gate --receipt '<RECEIPT_PATH>' --profile skill-change --exp
 升级宿主后重新记录版本、发现路径、显式调用、一个代理样例和一组有界 gate 样例，再更新“支持”状态。保留上一次成功记录以便比较，不把官网已描述的能力自动提升为本机已验证能力。
 
 模型升级还必须重跑 [模型任务测试](compatibility-contract.md#5-模型升级后的任务测试)，包括显式/隐式触发、相邻负例、权限边界、工具缺失、失败诚实报告和输出结构。用户目标或授权范围变化时，重建本地验收条件；不能把上一用户“可自动安装”的选择继承给下一用户。项目上线后的自动观察和受控更新流程见 [上线后的更新](compatibility-contract.md#6-上线后的自我更新)。
+
+## 2026-10-16 增量核对与观察接口
+
+以下是本轮限定核对，不替代上文各节的2026-10-06历史实测。当前命令返回 Codex CLI 0.162.0-alpha.17.2；实际升级后的原生发现、hooks与Claude运行没有重测。
+
+重新读取 [OpenAI Build skills](https://learn.chatgpt.com/docs/build-skills)、[OpenAI Hooks](https://learn.chatgpt.com/docs/hooks) 的技能组织/信任段落，以及 [Claude skills](https://code.claude.com/docs/en/skills) 的调用/frontmatter段落和 [Claude Hooks](https://code.claude.com/docs/en/hooks) 的公共输入/SubagentStop段落。Codex的非托管hook需要信任当前定义；Claude的主会话与子agent transcript路径有不同含义。它们不能用“复制同一目录”或“找到日志文件”替代具体宿主验证。没有更改或绕过宿主信任设置。
+
+本项目的 `observe-claude` 只识别明确传入JSONL中的结构化Skill工具事件；`observe-codex` 的SKILL.md读取只是加载信号。两个解析器不声称接受所有宿主版本的内部日志格式，也不把每个文件视为独立任务。`usage` 的跨报告策略、旧字段含义和迁移步骤见[迭代手册](evolution-playbook.md)。未建立可靠的来源成员合同前，不合并未知重叠的报告来满足停用复核门槛。
+
+本次官方Build skills页面列举用户/仓库的 `.agents/skills` 等发现位置。上文 `.codex/skills` 的52项发现结果属于2026-10-06的具体本机版本；不能拿它保证当前所有版本仍发现相同目录。本轮只静态检查既有用户目录，没有迁移目录或改写配置。需要调整发现位置时，先在目标宿主版本用实际发现接口核验，再保留原目录与回退路径。
