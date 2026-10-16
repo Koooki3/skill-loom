@@ -46,7 +46,9 @@ class ObservationInputIdentityTests(unittest.TestCase):
                                       ("claude", observe_claude, "skills")):
             with self.subTest(host=host), tempfile.TemporaryDirectory() as tmp:
                 path = self.fixture(Path(tmp), host)
-                alias = Path(os.path.relpath(path))
+                alias_parent = path.parent / "alias-parent"
+                alias_parent.mkdir()
+                alias = alias_parent / ".." / path.name
                 observed = observer([path] * 9 + [alias])
                 self.assertEqual(observed["file_count"], 1)
                 self.assertEqual(observed["duplicate_inputs_skipped"], 9)
