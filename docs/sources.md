@@ -80,3 +80,16 @@ BDD6BC24AEC0B67EBADD5780B52E49B99F97E4512468F71AC56CFFFDD53D0D99
 ## 项目实现对照
 
 本轮扩展直接对照仓库 `skillloom/cli.py`、`skillloom/gates.py`、`skillloom/strategy.py` 和 `scripts/stop_gate.py`，没有把这些项目选择归为官方宿主能力。已确认：gate的expected run/candidate和时效参数、Stop失败警告、用户profile结构验证，以及doctor仅做环境/PATH初筛。没有在本文工作中执行原生hook或完整模型矩阵；最终测试状态以主流程报告为准。
+
+## 2026-10-16 增量核对
+
+仅对本周观察与信任边界重新阅读以下一手正文；上面的2026-10-06发现/安装实测保留历史日期。
+
+| 来源 | 本次实际阅读 | 边界 |
+|---|---|---|
+| [OpenAI Build skills](https://learn.chatgpt.com/docs/build-skills) | 技能组织与按需加载 | 原Codex skills地址跳转到此页；直接访问旧skills短地址一次失败，后用官方入口取得正文 |
+| [OpenAI Hooks](https://learn.chatgpt.com/docs/hooks) | Review and trust hooks | 非托管定义的当前hash需要受信任；未实测本项目原生hook |
+| [Claude skills](https://code.claude.com/docs/en/skills) | Frontmatter、调用控制 | 宿主扩展字段不能当通用标准 |
+| [Claude Hooks](https://code.claude.com/docs/en/hooks) | 公共输入、SubagentStop | 主会话和子agent日志路径含义不同，不能直接当独立任务样本 |
+
+本次只读命令返回 `codex-cli 0.162.0-alpha.17.2`；不是对其所有功能的验证。七个开源来源的当前head、保留pin和限定取舍见[本周来源记录](../catalog/source-observation-2026-10-16.json)。

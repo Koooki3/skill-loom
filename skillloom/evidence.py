@@ -48,7 +48,7 @@ def summarize_events(path):
             "limits": "Curated observations, not causal evidence. Unobserved skills are not candidates for automatic removal."}
 
 
-SKILL_MD_READ = re.compile(r"skills/([a-z0-9]+(?:-[a-z0-9]+)*)/SKILL\.md")
+SKILL_MD_READ = re.compile(r"skills[\\/]+([a-z0-9]+(?:-[a-z0-9]+)*)[\\/]+SKILL\.md")
 SKILL_REF = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*(?::[a-z0-9]+(?:-[a-z0-9]+)*)?")
 AGENT_TYPE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,39}")
 
@@ -73,12 +73,27 @@ def _skill_table(calls, sessions):
     return {name: {"calls": calls[name], "sessions": len(sessions[name])} for name in sorted(calls)}
 
 
+def _distinct_inputs(paths):
+    """Deduplicate selected filesystem objects locally; export no path or identity."""
+    selected = list(map(Path, paths))
+    unique, seen = [], set()
+    for path in selected:
+        resolved = path.resolve(strict=True)
+        stat = resolved.stat()
+        identity = ("inode", stat.st_dev, stat.st_ino) if stat.st_ino else ("path", resolved)
+        if identity not in seen:
+            unique.append(resolved)
+            seen.add(identity)
+    return unique, len(selected) - len(unique)
+
+
 def observe_codex(paths):
     """Read explicit rollout files; export only structural counts and token totals.
 
     Deliberately do not infer skill usage or task success from text matches.
     Never include input filenames, prompts, commands, tool outputs, or identities.
     """
+    paths, skipped = _distinct_inputs(paths)
     counts = Counter()
     usage = []
     reads, read_sessions, days = Counter(), defaultdict(set), set()
@@ -117,13 +132,17 @@ def observe_codex(paths):
                         latest = value
         if latest is not None:
             usage.append(latest)
-    return {"schema": 1, "host": "codex", "observed_at": now(), "file_count": len(paths), "counts": dict(counts),
+    return {"schema": 1, "host": "codex", "observed_at": now(), "file_count": len(paths),
+            "duplicate_inputs_skipped": skipped, "counting_unit": "distinct-filesystem-objects",
+            "counts": dict(counts),
             "reported_total_tokens_sum": sum(usage) if usage else None,
             "files_with_usage": len(usage), "skill_attribution": "not_inferred",
             "skill_md_reads": _skill_table(reads, read_sessions), "window": _window(days),
             "limits": "Structural local sample; task_complete is a host event, not proof of quality. "
                       "skill_md_reads counts commands that open a SKILL.md: a load signal, not task use or success, "
-                      "and audit or install work also produces it. No raw content exported."}
+                      "and audit or install work also produces it. sessions counts input files containing a signal, "
+                      "not verified logical sessions. Distinct files may contain copied or overlapping events. "
+                      "Date endpoints describe elapsed span, not continuous capture. No raw content exported."}
 
 
 def observe_claude(paths):
@@ -132,6 +151,7 @@ def observe_claude(paths):
     A Skill tool call is a structured host event, so skill attribution here is exact for
     calls and says nothing about success. Prompts, tool inputs, outputs and paths are never exported.
     """
+    paths, skipped = _distinct_inputs(paths)
     counts, agents = Counter(), Counter()
     calls, call_sessions, days = Counter(), defaultdict(set), set()
     for index, path in enumerate(paths):
@@ -169,11 +189,15 @@ def observe_claude(paths):
                     elif block.get("name") == "Agent":
                         kind = arguments.get("subagent_type", "default")
                         agents[kind if isinstance(kind, str) and AGENT_TYPE.fullmatch(kind) else "other"] += 1
-    return {"schema": 1, "host": "claude", "observed_at": now(), "file_count": len(paths), "counts": dict(counts),
+    return {"schema": 1, "host": "claude", "observed_at": now(), "file_count": len(paths),
+            "duplicate_inputs_skipped": skipped, "counting_unit": "distinct-filesystem-objects",
+            "counts": dict(counts),
             "skill_attribution": "tool_use:Skill", "skills": _skill_table(calls, call_sessions),
             "subagent_dispatches": dict(sorted(agents.items())), "window": _window(days),
             "limits": "Structural local sample. A Skill call shows the skill was loaded, not that the task passed. "
-                      "No raw content, paths or identities exported."}
+                      "sessions counts input files containing a signal, not verified logical sessions. Distinct files "
+                      "may contain copied or overlapping events. Date endpoints describe elapsed span, not "
+                      "continuous capture. No raw content, paths or identities exported."}
 
 
 def suggest(inventory_report, event_report, minimum_failures=2):

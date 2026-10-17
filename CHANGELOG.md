@@ -2,13 +2,37 @@
 
 ## Unreleased
 
+No changes yet.
+
+## 0.2.0 — 2026-10-16
+
+Includes the previously unreleased 14 October feature commit and merged PR #1,
+plus the weekly observation-accounting fix. This is a MINOR release from v0.1.1.
+
+### Observation accounting and validation
+
+- Skip repeated paths, resolved aliases and hardlinks within each observation command.
+  Export no input identity; distinct copied or overlapping files remain unresolved.
+- Require one report to meet both file and elapsed-span thresholds. Do not add
+  aggregates with unknown overlap or splice their date windows. Per-skill counts
+  use maxima; positive signals from all reports still suppress unobserved candidates.
+- Recognize Windows and mixed separators in Codex path-reference signals.
+- Read linked-worktree Git metadata for recommendation markers without running Git.
+- Validate catalog source repository/path fields before staging suggestions; emit
+  structured argv and omit shell templates for paths with spaces or metacharacters.
+  Replace the destination placeholder and pass argv without a shell.
+- Add `--min-files`; retain the legacy `--min-sessions` flag and Python keyword.
+  schema 1 remains readable; regenerate old reports before relying on their counts.
+- Add 10 accounting tests, 6 release-interface tests and a 12-case synthetic baseline/candidate study;
+  record current source/research review and claim limits. No dependencies added.
+
 - Reject malformed `usage` inventory/observation structures, invalid counts and
   incomplete or reversed date windows with a controlled CLI error. A failed
   command leaves existing output untouched and creates no new output report.
 - Add synthetic API and CLI regression coverage; valid reports and optional
   empty observation windows keep their existing behavior.
 
-## 0.2.0 — 2026-10-14
+### First-deployment and host-observation commands
 
 Driven by one real deployment and its first week of local run records (Codex and Claude Code profiles
 of one user): first deployment needed hand-built profiles and hand-checked candidates, and Claude Code
@@ -16,8 +40,8 @@ had no observation path, so later updates had no usage evidence.
 
 - `recommend`: environment-aware first-deployment queue. Scans explicit project roots for markers
   (manifests, suffix counts, GitHub remote, declared dependencies), maps them to catalog capabilities,
-  reports missing host tools, license caveats, source pinning and budget headroom, and prints the exact
-  `stage` command. Works without a profile (neutral defaults). Installs nothing; fixed-scope skills are
+  reports missing host tools, license caveats, source pinning and budget headroom, and prints structured
+  `stage_argv` plus a command template for shell-simple paths. Works without a profile (neutral defaults). Installs nothing; fixed-scope skills are
   excluded unless `--allow-scoped`.
 - `observe-claude`: structural aggregation of Claude Code transcripts. A `Skill` tool call is a structured
   event, so per-skill call counts are exact; also subagent dispatch counts and the observed day window.
@@ -26,11 +50,11 @@ had no observation path, so later updates had no usage evidence.
   This is a load signal only; audit and install work produce it too. `skill_attribution` stays `not_inferred`.
 - `usage`: per-host skill status (`used`, `load-signal`, `unobserved`, `no-observation`) from host
   inventories plus observation reports. Review candidates for deactivation appear only after the evidence
-  window clears `--min-sessions` and `--min-days`; protected skills are excluded; nothing is changed.
+  window in a single report clears `--min-files` and `--min-days`; protected skills are excluded; nothing is changed.
 - A missing PyYAML now fails with an instruction instead of a traceback.
 - 17 regression tests on synthetic fixtures, including the window gate and protection rules.
 
-Evidence limits: a 2–3 day window with 9 Claude and 47 Codex files is far below the default `usage`
+The 14 October maintainer-reported sample (not independently resampled this week) had a 2–3 day window with 9 Claude and 47 Codex files, below the default `usage`
 thresholds, so no deactivation was proposed. Matching is a hypothesis for review, not a quality score.
 
 ## 0.1.1 — 2026-10-09

@@ -66,7 +66,7 @@ python -m skillloom recommend --catalog catalog/local-skills.example.json \
 |---|---|---|
 | 怎样找到值得采用的新技能 | 有范围的公开检索、固定来源变化检查、证据评分 | `scout` · `discover` · `stage` · `rank` |
 | 首次部署装什么 | 按本机项目标记、宿主工具和预算排出待审队列，给出固定提交的 `stage` 命令，不安装 | `recommend` |
-| 装了之后谁在用 | Claude/Codex 分别的使用证据；窗口不够不提退役 | `observe-claude` · `observe-codex` · `usage` |
+| 装了之后谁在用 | Claude/Codex 分别的使用信号；单份报告过门槛才提停用复核 | `observe-claude` · `observe-codex` · `usage` |
 | 本地究竟缺什么 | 显式需求、能力提供者、任务失败原因分开 | `observe-codex` · `events` · `gaps` |
 | 技能越来越重复 | 能力重叠候选、用户预算、触发边界与退役流程 | `portfolio` · [路由与协作](docs/routing-and-teams.md) |
 | 不同用户怎么适配 | 私有可编辑profile、小范围试点、环境初筛 | `doctor` · [设计与质量](docs/design-and-quality.md) |
@@ -111,3 +111,5 @@ flowchart LR
 欢迎提交真实任务缺口、最小复现和宿主验证结果。见[贡献指南](CONTRIBUTING.md)、[安全说明](SECURITY.md)和[变更记录](CHANGELOG.md)。代码与原创文档采用 [MIT](LICENSE)；被引用技能和论文保留各自许可，目录不授予它们新的分发权。
 
 [v0.1.1 receipt 输入修复与回归报告](research/weekly-2026-10-09.md).
+
+[v0.2.0 观察去重、覆盖边界与合成对照](research/weekly-2026-10-16.md)：同一文件不重复累计，来源关系不明的报告不相加；新增推荐与 Claude 观察命令。
