@@ -38,6 +38,23 @@ class ReleaseInterfaceTests(unittest.TestCase):
             observation = observe_codex([path])
         self.assertEqual(set(observation["skill_md_reads"]), {"used", "other"})
 
+    def test_quoted_skill_path_is_labeled_as_reference_not_verified_read(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "synthetic.jsonl"
+            payload = {"type": "function_call", "name": "write_fixture",
+                       "arguments": json.dumps({"text": 'example = "skills/quoted-fixture/SKILL.md"'})}
+            path.write_text(json.dumps({"type": "response_item", "payload": payload}), encoding="utf8")
+            observation = observe_codex([path])
+            self.assertFalse((Path(tmp) / "skills").exists())
+        self.assertEqual(observation["skill_md_reads"], {"quoted-fixture": {"calls": 1, "sessions": 1}})
+        self.assertEqual(observation["skill_signal_basis"], "syntactic-tool-payload-path-reference")
+        self.assertEqual(observation["skill_attribution"], "not_inferred")
+        self.assertIn("file access, skill use and success are not verified", observation["limits"])
+        self.assertNotIn("example =", json.dumps(observation))
+        report = usage_report({"codex": {"skills": [{"name": "quoted-fixture"}]}}, [observation])
+        self.assertEqual(report["hosts"][0]["skills"][0]["status"], "load-signal")
+        self.assertIn("not verified file access or skill use", report["limits"])
+
     def test_linked_worktree_remote_marker_absolute_and_relative(self):
         for absolute in (True, False):
             with self.subTest(absolute=absolute), tempfile.TemporaryDirectory() as tmp:

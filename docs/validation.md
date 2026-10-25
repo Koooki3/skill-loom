@@ -78,3 +78,9 @@ GitHub Actions已在提交 `b4cf24f5517c23dbc6c62df4704f4e8e1b3c017c` 完成[首
 [合成对照](../research/results/observation-coverage.json)在未发布 main 的同一基线与候选上运行：12项约定由6项满足变为12项满足。它检查重复输入、重复汇总、门槛拼接及有效控制，不是独立样本的准确率。见[完整补充报告](../research/weekly-2026-10-16.md)。发布提交的实际跨平台CI记录由对应 Release 关联。
 
 本轮只读盘点用户技能39项、0错误、0警告，没有全局变更。运行抽样仅一个明确选择的项目会话，Claude实际运行未抽样。命令读取的 Codex CLI 为0.162.0-alpha.17.2；没有因此扩大原生 hooks、发现或模型效果的支持声明。
+
+## 2026-10-25 release preflight
+
+The resumed weekly candidate adds one synthetic quoted-path regression: no skill file is created and no referenced command is executed. Local Windows/Python 3.12 ran 90 tests: 88 passed, two skipped (POSIX execute bits and unavailable symlink privilege). The isolated demo passed install, exact rollback, reapply and no-change checks. The first run failed only because an existing test expected the phrase “load signal”; the final wording retains that legacy label while explicitly defining the weaker syntactic reference.
+
+The [dated supplement](../research/weekly-2026-10-23.md) distinguishes the private real-case summary from this synthetic test. Native hooks, macOS and task-quality or token benefits were not tested.

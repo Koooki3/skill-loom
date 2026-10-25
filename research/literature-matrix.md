@@ -150,3 +150,12 @@ Links, license limits and precise metadata are in the [source register](referenc
 The [weekly supplement](weekly-2026-10-16.md) explains the implementation and
 counterexamples. The ten-file/seven-day defaults remain a review policy, with
 no statistical confidence claim or inference of skill uselessness.
+
+## 2026-10-25 incremental reading
+
+| Register | Version and reading | Local decision | Limits |
+|---|---|---|---|
+| R21 [HABIT-Bench](https://arxiv.org/html/2610.24520v2) | v2, 20 October; §§1, 3.2–3.4, 4.3 | Keep explicit profiles and distinguish references from supported outcomes | Synthetic histories; not reproduced; no personalized service deployed |
+| R22 [MetaSkill](https://arxiv.org/html/2610.24723v1) | v1, 17 October; §§3.1, 5.2, 7 | Retain auditable handoffs; defer a new runtime without a local need | Composition after skill selection; retrieval is outside its evaluation; not reproduced |
+
+[R18 §5.6.2](https://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-membership) was rechecked: membership assertions can be incomplete. A source list alone does not establish capture completeness. These are engineering interpretations, not new Skill Loom empirical claims.

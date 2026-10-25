@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "observed_at": "2026-10-25",
+  "registry_changed": false,
+  "comparison_baseline": "source-observation-2026-10-16.json",
+  "sources": [
+    {
+      "repository": "xstongxue/best-skills",
+      "observed_head": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+      "head_date": "2026-09-13T05:04:40Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "changed_files_since_previous": [],
+      "compare_url": null,
+      "review_scope": "Head unchanged from previous observation; no new content review.",
+      "decision": "Retain existing pin.",
+      "license_scope": "No new pin adopted or third-party skill redistributed; selected-skill license review remains required.",
+      "pinned_commit": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+      "previous_observed_head": "9aa4e555950da6e43e7d98c5f0c7b70264204850"
+    },
+    {
+      "repository": "openai/skills",
+      "observed_head": "49f948faa9258a0c61caceaf225e179651397431",
+      "head_date": "2026-06-24T02:36:12Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "changed_files_since_previous": [],
+      "compare_url": null,
+      "review_scope": "Head unchanged from previous observation; no new content review.",
+      "decision": "Retain existing pin.",
+      "license_scope": "No new pin adopted or third-party skill redistributed; selected-skill license review remains required.",
+      "pinned_commit": "49f948faa9258a0c61caceaf225e179651397431",
+      "previous_observed_head": "49f948faa9258a0c61caceaf225e179651397431"
+    },
+    {
+      "repository": "anthropics/skills",
+      "observed_head": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "head_date": "2026-10-09T18:45:49Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "changed_files_since_previous": [],
+      "compare_url": null,
+      "review_scope": "Head unchanged from previous observation; no new content review.",
+      "decision": "Retain existing pin.",
+      "license_scope": "No new pin adopted or third-party skill redistributed; selected-skill license review remains required.",
+      "pinned_commit": "683bc88e56f3e09ba94f7055977f3d3aa499f202",
+      "previous_observed_head": "dbd4588f9e1033efb41dad4bef2f7947c8993d44"
+    },
+    {
+      "repository": "vercel-labs/agent-skills",
+      "observed_head": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "head_date": "2026-08-28T13:36:07Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "changed_files_since_previous": [],
+      "compare_url": null,
+      "review_scope": "Head unchanged from previous observation; no new content review.",
+      "decision": "Retain existing pin.",
+      "license_scope": "No new pin adopted or third-party skill redistributed; selected-skill license review remains required.",
+      "pinned_commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "previous_observed_head": "063bee94c3f4df8453406c830b0a7df0f2860278"
+    },
+    {
+      "repository": "VoltAgent/awesome-agent-skills",
+      "observed_head": "3642aa5456b6518896bd690862296b134d69aa10",
+      "head_date": "2026-10-24T09:51:28Z",
+      "changed_since_previous": true,
+      "adopted": false,
+      "commits_ahead_of_previous": 38,
+      "changed_files_since_previous": [
+        "README.md"
+      ],
+      "compare_url": "https://github.com/VoltAgent/awesome-agent-skills/compare/3cd17ca9f40796a5dc564ebc6d76b4aa1303ff07...3642aa5456b6518896bd690862296b134d69aa10",
+      "review_scope": "Complete comparison commit/file metadata and README patch; linked skill code and licenses not reviewed.",
+      "decision": "Discovery links do not establish local fit; no unmet local need selected for installation.",
+      "license_scope": "No new pin adopted or third-party skill redistributed; selected-skill license review remains required.",
+      "pinned_commit": "94819ad66a3f3e574fdbc3651fc5973d5f46ff8b",
+      "previous_observed_head": "3cd17ca9f40796a5dc564ebc6d76b4aa1303ff07"
+    },
+    {
+      "repository": "addyosmani/web-quality-skills",
+      "observed_head": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "head_date": "2026-08-24T21:07:33Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "changed_files_since_previous": [],
+      "compare_url": null,
+      "review_scope": "Head unchanged from previous observation; no new content review.",
+      "decision": "Retain existing pin.",
+      "license_scope": "No new pin adopted or third-party skill redistributed; selected-skill license review remains required.",
+      "pinned_commit": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "previous_observed_head": "afa8da942115f2961fdbfa80807ea0b232ff6c00"
+    },
+    {
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "observed_head": "593377bb048752abb0152deab9fbb1083a6087df",
+      "head_date": "2026-10-19T09:33:56Z",
+      "changed_since_previous": true,
+      "adopted": false,
+      "commits_ahead_of_previous": 1,
+      "changed_files_since_previous": [
+        "docs/security-report.json",
+        "docs/security-report.md"
+      ],
+      "compare_url": "https://github.com/K-Dense-AI/scientific-agent-skills/compare/a1043ef544e3a100c28e70a736b6cf32554d0677...593377bb048752abb0152deab9fbb1083a6087df",
+      "review_scope": "Complete comparison commit/file metadata; selected security-report header and summary patch only.",
+      "decision": "Report refresh only; scanner findings are unvalidated upstream claims, not a Skill Loom audit.",
+      "license_scope": "No new pin adopted or third-party skill redistributed; selected-skill license review remains required.",
+      "pinned_commit": "92ace75ac21efe19a620434e0ca4e356081fe807",
+      "previous_observed_head": "a1043ef544e3a100c28e70a736b6cf32554d0677"
+    }
+  ],
+  "limits": "Seven registered sources rechecked; two changed since prior observation. This is bounded source triage, not a full audit or global discovery census. No skill installed."
+}

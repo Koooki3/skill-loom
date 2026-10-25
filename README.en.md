@@ -65,3 +65,5 @@ See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
 [v0.1.1 receipt-input fix and regression report](research/weekly-2026-10-09.md).
 
 [v0.2.0 observation accounting and synthetic comparison](research/weekly-2026-10-16.md). Defaults are review policy, not confidence bounds or proof that an unobserved skill is unnecessary.
+
+[Weekly signal interpretation and research supplement](research/weekly-2026-10-23.md): a skill path in a tool payload does not verify a file read. Legacy fields remain compatible and the signal basis is explicit.

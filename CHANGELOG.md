@@ -4,10 +4,10 @@
 
 No changes yet.
 
-## 0.2.0 — 2026-10-16
+## 0.2.0 — 2026-10-25
 
-Includes the previously unreleased 14 October feature commit and merged PR #1,
-plus the weekly observation-accounting fix. This is a MINOR release from v0.1.1.
+Includes the previously unreleased 14 October feature commit and merged PRs #1 and #2,
+plus the weekly signal-interpretation correction. This is a MINOR release from v0.1.1.
 
 ### Observation accounting and validation
 
@@ -17,6 +17,11 @@ plus the weekly observation-accounting fix. This is a MINOR release from v0.1.1.
   aggregates with unknown overlap or splice their date windows. Per-skill counts
   use maxima; positive signals from all reports still suppress unobserved candidates.
 - Recognize Windows and mixed separators in Codex path-reference signals.
+- Label Codex signals with optional `skill_signal_basis` metadata. The legacy
+  `skill_md_reads` field counts syntactic tool-payload path references, including
+  quoted code and failed commands; it does not verify file access or skill use.
+  Existing counts, `load-signal` status and schema 1 remain compatible.
+- Add a quoted-path regression and dated research/source-review supplement.
 - Read linked-worktree Git metadata for recommendation markers without running Git.
 - Validate catalog source repository/path fields before staging suggestions; emit
   structured argv and omit shell templates for paths with spaces or metacharacters.
@@ -46,7 +51,7 @@ had no observation path, so later updates had no usage evidence.
 - `observe-claude`: structural aggregation of Claude Code transcripts. A `Skill` tool call is a structured
   event, so per-skill call counts are exact; also subagent dispatch counts and the observed day window.
   No prompts, tool inputs, outputs or paths are exported.
-- `observe-codex` now reports `skill_md_reads` (commands that open `skills/<name>/SKILL.md`) and the day window.
+- `observe-codex` now reports `skill_md_reads` (syntactic references to `skills/<name>/SKILL.md` in tool payloads) and the day window.
   This is a load signal only; audit and install work produce it too. `skill_attribution` stays `not_inferred`.
 - `usage`: per-host skill status (`used`, `load-signal`, `unobserved`, `no-observation`) from host
   inventories plus observation reports. Review candidates for deactivation appear only after the evidence

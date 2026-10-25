@@ -32,9 +32,9 @@ python -m skillloom suggest --inventory '<private-state>/inventory.json' --event
 
 建议为一次值得处理的事件，在私有工作目录记录：任务要求、期望产物、实际失败、可复现输入、本地证据位置、是工具/环境/skill/源材料哪一层的问题，以及最小修复。保留原始证据但只共享必要的匿名化复现输入。
 
-`observe-claude` 同样只汇总结构：`Skill` 工具调用是宿主的结构化事件，所以每个技能的调用数是精确的；另有子 agent 派发数和观察日期窗口。`observe-codex` 额外统计打开 `skills/<name>/SKILL.md` 的命令（`skill_md_reads`），它只是加载信号：审计和安装也会读这些文件，不能当作任务使用或成功。
+`observe-claude` 同样只汇总结构：`Skill` 工具调用是宿主的结构化事件，所以每个技能的调用数是精确的；另有子 agent 派发数和观察日期窗口。`observe-codex` 额外统计工具参数中对 `skills/<name>/SKILL.md` 的语法路径引用（旧字段 `skill_md_reads`）。引用示例代码、审计文本或失败命令也会命中，不能据此证明文件读取、技能使用或任务成功。
 
-`usage` 把宿主清单和观察报告合并，按宿主分别判断：`used`（Claude 的精确调用）、`load-signal`（Codex 的读取）、`unobserved`、`no-observation`。只有同一份观察报告同时达到 `--min-files`（默认10个输入文件）和 `--min-days`（默认7天首尾跨度）后才列出“复核停用”候选，按描述占用从大到小排序，受保护技能不入列，且只建议移出发现目录、不删除。这是人工复核政策，不是统计置信度、连续监测证明或技能无用的结论。`--min-sessions` 是保留的旧参数别名，实际计数单位仍为文件。
+`usage` 把宿主清单和观察报告合并，按宿主分别判断：`used`（Claude 的精确调用）、`load-signal`（Codex 的语法路径引用）、`unobserved`、`no-observation`。只有同一份观察报告同时达到 `--min-files`（默认10个输入文件）和 `--min-days`（默认7天首尾跨度）后才列出“复核停用”候选，按描述占用从大到小排序，受保护技能不入列，且只建议移出发现目录、不删除。这是人工复核政策，不是统计置信度、连续监测证明或技能无用的结论。`--min-sessions` 是保留的旧参数别名，实际计数单位仍为文件。
 
 ```bash
 python -m skillloom observe-claude --log '<transcript.jsonl>' --out '<private-state>/obs-claude.json'
@@ -124,3 +124,5 @@ python -m skillloom rollback --transaction '<transaction-directory>'
 每轮维护以以下三种结果之一结束：有证据支持的变更并完成验收；没有必要变更；存在明确阻塞和下一步。达到重试/成本上限时记录未完成，不积累无限 hook 循环。没有变化时保持安静，不制造“更新报告”来替代进展。
 
 推荐结果中的 `stage_argv` 是参数数组；调用方替换目标目录占位符后，应直接作为进程参数传入，不要拼接成 shell 字符串。仓库名和固定路径先按 stage 的约束校验。对空格、引号或 shell 元字符等仍合法的目录名，只提供数组并标记 `stage-argv-only`；简单路径另给含带引号占位符的 `stage_command` 模板。模板需要复核并替换占位符后才可执行。普通 Git 目录和 linked worktree 的 gitdir/commondir 可只读提取远端标记；不会启动 Git 或执行配置 includes。
+
+Codex 的 `skill_md_reads` 和 `load-signal` 是兼容旧版的名称：它们只表示工具参数中的语法路径引用，引用示例代码、审计文本或失败命令也可能命中。`skill_signal_basis` 明确标识该来源。不能据此证明文件已读取、技能已执行或任务已通过；真实任务缺口仍需带来源的结果与验收记录。
