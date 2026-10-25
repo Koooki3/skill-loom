@@ -2,9 +2,9 @@
   "schema_version": 1,
   "title": "Skill Loom — primary literature reference register",
   "language": "zh-CN",
-  "accessed": "2026-10-16",
-  "cutoff": "2026-10-16",
-  "scope": "15 original primary papers plus two incremental papers and three primary specifications; the original version 0.1 manuscript retains its original cutoff. Source claims are not Skill Loom experimental results.",
+  "accessed": "2026-10-25",
+  "cutoff": "2026-10-25",
+  "scope": "15 original primary papers, four incremental papers and three primary specifications. The original v0.1 manuscript retains its original cutoff. Source claims are not Skill Loom experimental results.",
   "reading_status_vocabulary": {
     "full_text_sections_read": "已打开并阅读列出的正文方法、评价或局限章节；不表示逐页读完所有附录。",
     "abstract_only": "仅核对摘要与元数据；本版没有以此状态纳入的论文。",
@@ -794,6 +794,78 @@
       "reproduction_status": "not_reproduced",
       "license_note": "arXiv perpetual non-exclusive distribution license; not a license to relicense paper/code as MIT.",
       "verification_note": "Recent preprint, not established as accepted or independently replicated. Synthetic generator and method share a semantic contract. Adopt replay/order test properties, not latest-revision semantics or reported performance."
+    },
+    {
+      "label": "R21",
+      "id": "zhang_habit2026",
+      "title": "HABIT-Bench: Evaluating Habit Induction from Longitudinal Weak Evidence in Agent Memory",
+      "authors": [
+        "Junming Zhang",
+        "Rubin Wei",
+        "Xu Cheng",
+        "Hao Sun",
+        "Jiarui Wang",
+        "Ruoxi Cheng",
+        "Xiquan Wang",
+        "Peisong Wu",
+        "Mingsong Chen",
+        "Zhouhan Lin"
+      ],
+      "authors_complete": true,
+      "year": 2026,
+      "arxiv_id": "2610.24520",
+      "version": "v2",
+      "first_submitted": "2026-10-17",
+      "version_date": "2026-10-20",
+      "url": "https://arxiv.org/abs/2610.24520v2",
+      "metadata_url": "https://arxiv.org/abs/2610.24520",
+      "full_text_url": "https://arxiv.org/html/2610.24520v2",
+      "accessed": "2026-10-25",
+      "source_kind": "primary_paper",
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "1 Introduction",
+        "3.2 Data and Task Construction",
+        "3.3 Evaluation Protocol and Metrics",
+        "3.4 Human Validation",
+        "4.3 Diagnostic Controls and Evidence Analysis"
+      ],
+      "reproduction_status": "not_reproduced",
+      "license_note": "arXiv perpetual non-exclusive distribution license; no paper or implementation vendored.",
+      "verification_note": "Metadata verified against versioned arXiv record; synthetic histories and protocol-specific diagnostics. No Skill Loom efficacy claim inferred."
+    },
+    {
+      "label": "R22",
+      "id": "shu_metaskill2026",
+      "title": "Where Natural Language Ends in Agents: Executable Skill Composition with MetaSkill",
+      "authors": [
+        "Meng Shu",
+        "Wei He",
+        "Hang Zhou",
+        "Runke Liu",
+        "Kai Han",
+        "Yunhe Wang"
+      ],
+      "authors_complete": true,
+      "year": 2026,
+      "arxiv_id": "2610.24723",
+      "version": "v1",
+      "first_submitted": "2026-10-17",
+      "version_date": "2026-10-17",
+      "url": "https://arxiv.org/abs/2610.24723v1",
+      "metadata_url": "https://arxiv.org/abs/2610.24723",
+      "full_text_url": "https://arxiv.org/html/2610.24723v1",
+      "accessed": "2026-10-25",
+      "source_kind": "primary_paper",
+      "reading_status": "full_text_sections_read",
+      "read_sections": [
+        "3.1 Representation boundary",
+        "5.2 MetaSkill versus AgentSkillOS with matched Skills",
+        "7 Limitations"
+      ],
+      "reproduction_status": "not_reproduced",
+      "license_note": "arXiv perpetual non-exclusive distribution license; no paper or implementation vendored.",
+      "verification_note": "Metadata verified against versioned arXiv record. Composition follows component selection; no ecosystem retrieval evaluation or Skill Loom performance transfer. Abstraction noted, runtime deferred."
     }
   ]
 }

@@ -117,8 +117,8 @@ def observe_codex(paths):
                     days.add(day)
                 if kind == "response_item" and payload.get("type") in {"function_call", "custom_tool_call"}:
                     counts["tool_calls"] += 1
-                    # A command that opens skills/<name>/SKILL.md is how Codex loads a skill. It is a load
-                    # signal only: audits and installs also read these files.
+                    # These are syntactic path references in tool payloads, including quoted
+                    # code and failed commands. They do not verify file access or skill use.
                     for name in set(SKILL_MD_READ.findall(json.dumps(payload, ensure_ascii=False))):
                         reads[name] += 1
                         read_sessions[name].add(index)
@@ -137,10 +137,12 @@ def observe_codex(paths):
             "counts": dict(counts),
             "reported_total_tokens_sum": sum(usage) if usage else None,
             "files_with_usage": len(usage), "skill_attribution": "not_inferred",
+            "skill_signal_basis": "syntactic-tool-payload-path-reference",
             "skill_md_reads": _skill_table(reads, read_sessions), "window": _window(days),
             "limits": "Structural local sample; task_complete is a host event, not proof of quality. "
-                      "skill_md_reads counts commands that open a SKILL.md: a load signal, not task use or success, "
-                      "and audit or install work also produces it. sessions counts input files containing a signal, "
+                      "skill_md_reads is a legacy name for syntactic SKILL.md path references in tool payloads. "
+                      "This legacy load signal can match quoted code, audit text and failed commands; file access, skill use and success "
+                      "are not verified. sessions counts input files containing a signal, "
                       "not verified logical sessions. Distinct files may contain copied or overlapping events. "
                       "Date endpoints describe elapsed span, not continuous capture. No raw content exported."}
 

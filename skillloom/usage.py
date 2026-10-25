@@ -81,7 +81,7 @@ def _host_report(host, inventory_report, observations, protected, min_sessions, 
             qualified += 1
     span = max(spans, default=0)
     sufficient = qualified > 0
-    # claude: exact Skill tool calls. codex: SKILL.md opens (a weaker load signal).
+    # claude: exact Skill tool calls. codex: syntactic SKILL.md path references.
     key, exact = ("skills", True) if host == "claude" else ("skill_md_reads", False)
     seen = {}
     for observation in mine:
@@ -132,8 +132,9 @@ def usage_report(inventories, observations, protected=(), min_sessions=DEFAULT_M
              for host, report in sorted(inventories.items())]
     return {"schema": 1, "observed_at": now(),
             "thresholds": {"min_files": min_sessions, "min_sessions": min_sessions, "min_days": min_days}, "hosts": hosts,
-            "limits": "Unobserved is not useless: a skill may serve rare, high-value tasks, and a Skill call or SKILL.md "
-                      "read does not show the task succeeded. Review candidates need human judgement and are only "
+            "limits": "Unobserved is not useless: a skill may serve rare, high-value tasks. Codex load-signal is a "
+                      "legacy label for syntactic tool-payload path references, not verified file access or skill use. "
+                      "A Skill call does not show the task succeeded. Review candidates need human judgement and are only "
                       "listed when one report meets both file-count and elapsed-span thresholds; these do not prove "
                       "capture completeness or independent task opportunities. Across reports, file counts, spans "
                       "and per-skill counts are maxima, not sums or verified unique totals. sessions and "
