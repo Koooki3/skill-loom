@@ -84,3 +84,17 @@ GitHub Actions已在提交 `b4cf24f5517c23dbc6c62df4704f4e8e1b3c017c` 完成[首
 The resumed weekly candidate adds one synthetic quoted-path regression: no skill file is created and no referenced command is executed. Local Windows/Python 3.12 ran 90 tests: 88 passed, two skipped (POSIX execute bits and unavailable symlink privilege). The isolated demo passed install, exact rollback, reapply and no-change checks. The first run failed only because an existing test expected the phrase “load signal”; the final wording retains that legacy label while explicitly defining the weaker syntactic reference.
 
 The [dated supplement](../research/weekly-2026-10-23.md) distinguishes the private real-case summary from this synthetic test. Native hooks, macOS and task-quality or token benefits were not tested.
+
+## v0.2.1 documentation validation — 2026-10-30
+
+Local Windows/Python 3.12.8 ran the unchanged 90-test suite: 88 passed and two
+platform skips (POSIX execute bits and unavailable symlink privilege). The
+isolated demo passed installation, exact rollback, reapplication and no-change
+checks. The targeted release check covered 87 files with no errors.
+
+The manual decision-history example is parsed as JSON by the release check;
+its two synthetic records are an illustrative scenario, not an executed decision
+engine or a model-task experiment. No runtime algorithm, dependency, schema or
+global skill was changed. Native hooks, macOS and model-task benefits remain
+unverified. The [dated supplement](../research/weekly-2026-10-30.md) records the
+bounded local sample, source decisions and research reading scope.

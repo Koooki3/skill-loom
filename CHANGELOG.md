@@ -4,6 +4,19 @@
 
 No changes yet.
 
+## 0.2.1 — 2026-10-30
+
+Documentation PATCH: make prior adoption/defer/reject decisions reusable under
+explicit source, task and environment conditions.
+
+- Add a manual decision-history guide and two-record synthetic JSON example.
+  No CLI reads or enforces the format; a successor requests review, not installation.
+- Add dated local evidence, seven-source triage and two primary-paper readings.
+  Preserve historical manuscript results and distinguish proposals from experiments.
+- Document reopening conditions and retention of earlier evidence. No runtime
+  behavior, schema, dependency, host policy or global skill changes.
+
+
 ## 0.2.0 — 2026-10-25
 
 Includes the previously unreleased 14 October feature commit and merged PRs #1 and #2,

@@ -1,0 +1,155 @@
+{
+  "schema": 1,
+  "observed_at": "2026-10-30",
+  "registry_changed": false,
+  "comparison_baseline": "source-observation-2026-10-25.json",
+  "sources": [
+    {
+      "repository": "xstongxue/best-skills",
+      "pinned_commit": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+      "previous_observed_head": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+      "observed_head": "9aa4e555950da6e43e7d98c5f0c7b70264204850",
+      "head_date": "2026-09-13T05:04:40Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "comparison_pages": [],
+      "returned_commits": 0,
+      "comparison_metadata_complete": true,
+      "changed_files_since_previous": [],
+      "review_scope": "Unchanged head; prior reviewed observation retained.",
+      "decision": "Retain registry pin. No task need demonstrated for installation or dependency migration.",
+      "license_scope": "No third-party code redistributed. Selected-skill and dependency licenses require separate review before adoption."
+    },
+    {
+      "repository": "openai/skills",
+      "pinned_commit": "49f948faa9258a0c61caceaf225e179651397431",
+      "previous_observed_head": "49f948faa9258a0c61caceaf225e179651397431",
+      "observed_head": "49f948faa9258a0c61caceaf225e179651397431",
+      "head_date": "2026-06-24T02:36:12Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "comparison_pages": [],
+      "returned_commits": 0,
+      "comparison_metadata_complete": true,
+      "changed_files_since_previous": [],
+      "review_scope": "Unchanged head; prior reviewed observation retained.",
+      "decision": "Retain registry pin. No task need demonstrated for installation or dependency migration.",
+      "license_scope": "No third-party code redistributed. Selected-skill and dependency licenses require separate review before adoption."
+    },
+    {
+      "repository": "anthropics/skills",
+      "pinned_commit": "683bc88e56f3e09ba94f7055977f3d3aa499f202",
+      "previous_observed_head": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "observed_head": "ca45fc496a3436251f191354091d557da31c15b5",
+      "head_date": "2026-10-28T19:20:38Z",
+      "changed_since_previous": true,
+      "adopted": false,
+      "commits_ahead_of_previous": 1,
+      "comparison_pages": [
+        1
+      ],
+      "returned_commits": 1,
+      "comparison_metadata_complete": true,
+      "changed_files_since_previous": [
+        "skills/mcp-builder/SKILL.md",
+        "skills/mcp-builder/reference/node_mcp_server.md",
+        "skills/mcp-builder/reference/node_mcp_server_v2.md"
+      ],
+      "review_scope": "Complete comparison metadata; entrypoint and v1 notice patches read; v2 implementation guide selectively read, not built or audited.",
+      "decision": "Retain registry pin. No task need demonstrated for installation or dependency migration.",
+      "license_scope": "No third-party code redistributed. Selected-skill and dependency licenses require separate review before adoption."
+    },
+    {
+      "repository": "vercel-labs/agent-skills",
+      "pinned_commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "previous_observed_head": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "observed_head": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+      "head_date": "2026-10-27T21:40:02Z",
+      "changed_since_previous": true,
+      "adopted": false,
+      "commits_ahead_of_previous": 5,
+      "comparison_pages": [
+        1
+      ],
+      "returned_commits": 5,
+      "comparison_metadata_complete": true,
+      "changed_files_since_previous": [
+        "README.md",
+        "skills/deploy-to-vercel.zip",
+        "skills/deploy-to-vercel/Archive.zip",
+        "skills/deploy-to-vercel/SKILL.md",
+        "skills/deploy-to-vercel/resources/deploy-codex.sh",
+        "skills/deploy-to-vercel/resources/deploy.sh",
+        "skills/react-view-transitions/AGENTS.md",
+        "skills/react-view-transitions/SKILL.md"
+      ],
+      "review_scope": "Complete comparison metadata; deployment/transition file changes identified. Binary archives not inspected; no deployment script executed or accepted.",
+      "decision": "Retain registry pin. No task need demonstrated for installation or dependency migration.",
+      "license_scope": "No third-party code redistributed. Selected-skill and dependency licenses require separate review before adoption."
+    },
+    {
+      "repository": "VoltAgent/awesome-agent-skills",
+      "pinned_commit": "94819ad66a3f3e574fdbc3651fc5973d5f46ff8b",
+      "previous_observed_head": "3642aa5456b6518896bd690862296b134d69aa10",
+      "observed_head": "a6f9992ceaef05841a9b92e6849d90004a61710c",
+      "head_date": "2026-10-29T09:33:34Z",
+      "changed_since_previous": true,
+      "adopted": false,
+      "commits_ahead_of_previous": 104,
+      "comparison_pages": [
+        1,
+        2
+      ],
+      "returned_commits": 104,
+      "comparison_metadata_complete": true,
+      "changed_files_since_previous": [
+        "README.md"
+      ],
+      "review_scope": "Complete comparison metadata across two commit pages; README discovery changes selectively read. Linked skill implementations and licenses not reviewed.",
+      "decision": "Retain registry pin. No task need demonstrated for installation or dependency migration.",
+      "license_scope": "No third-party code redistributed. Selected-skill and dependency licenses require separate review before adoption."
+    },
+    {
+      "repository": "addyosmani/web-quality-skills",
+      "pinned_commit": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "previous_observed_head": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "observed_head": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "head_date": "2026-08-24T21:07:33Z",
+      "changed_since_previous": false,
+      "adopted": false,
+      "commits_ahead_of_previous": 0,
+      "comparison_pages": [],
+      "returned_commits": 0,
+      "comparison_metadata_complete": true,
+      "changed_files_since_previous": [],
+      "review_scope": "Unchanged head; prior reviewed observation retained.",
+      "decision": "Retain registry pin. No task need demonstrated for installation or dependency migration.",
+      "license_scope": "No third-party code redistributed. Selected-skill and dependency licenses require separate review before adoption."
+    },
+    {
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "pinned_commit": "92ace75ac21efe19a620434e0ca4e356081fe807",
+      "previous_observed_head": "593377bb048752abb0152deab9fbb1083a6087df",
+      "observed_head": "5f2bc0341354fd5590aef76a533ada1e1e5b4e62",
+      "head_date": "2026-10-26T09:36:14Z",
+      "changed_since_previous": true,
+      "adopted": false,
+      "commits_ahead_of_previous": 1,
+      "comparison_pages": [
+        1
+      ],
+      "returned_commits": 1,
+      "comparison_metadata_complete": true,
+      "changed_files_since_previous": [
+        "docs/security-report.json",
+        "docs/security-report.md"
+      ],
+      "review_scope": "Complete comparison metadata; scanner report updates identified. Scanner claims not validated and not treated as a Skill Loom security audit.",
+      "decision": "Retain registry pin. No task need demonstrated for installation or dependency migration.",
+      "license_scope": "No third-party code redistributed. Selected-skill and dependency licenses require separate review before adoption."
+    }
+  ],
+  "limits": "Seven registered heads, four changed. Comparison metadata complete; content review is scoped per source, not a full code/license audit or global census. Nothing installed."
+}
