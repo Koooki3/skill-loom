@@ -159,3 +159,12 @@ no statistical confidence claim or inference of skill uselessness.
 | R22 [MetaSkill](https://arxiv.org/html/2610.24723v1) | v1, 17 October; §§3.1, 5.2, 7 | Retain auditable handoffs; defer a new runtime without a local need | Composition after skill selection; retrieval is outside its evaluation; not reproduced |
 
 [R18 §5.6.2](https://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-membership) was rechecked: membership assertions can be incomplete. A source list alone does not establish capture completeness. These are engineering interpretations, not new Skill Loom empirical claims.
+
+## 2026-10-30 incremental reading
+
+| Register | Reading | Engineering implication | Boundary |
+|---|---|---|---|
+| R23 [SkillHone](https://aclanthology.org/2026.emnlp-industry.105/) | §§2.1–2.3, 3.1–3.4; Limitations | Preserve reasons and evidence with decisions | One-skill evolution; not reproduced |
+| R24 [Skill-V v1](https://arxiv.org/html/2610.11781v1) | Introduction, §§3–4; Appendix A | Recheck old evidence when conditions change | Historical dependency; not reproduced |
+
+The [supplement](weekly-2026-10-30.md) explains the manual example and deferred runtime work. Neither source establishes Skill Loom efficacy or a permission boundary.

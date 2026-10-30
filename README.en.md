@@ -67,3 +67,5 @@ See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
 [v0.2.0 observation accounting and synthetic comparison](research/weekly-2026-10-16.md). Defaults are review policy, not confidence bounds or proof that an unobserved skill is unnecessary.
 
 [Weekly signal interpretation and research supplement](research/weekly-2026-10-23.md): a skill path in a tool payload does not verify a file read. Legacy fields remain compatible and the signal basis is explicit.
+
+[v0.2.1 decision history and reconsideration](docs/decision-history.md): a manual example preserves the conditions behind prior decisions. See the [dated research and evidence](research/weekly-2026-10-30.md).

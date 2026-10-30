@@ -126,3 +126,7 @@ python -m skillloom rollback --transaction '<transaction-directory>'
 推荐结果中的 `stage_argv` 是参数数组；调用方替换目标目录占位符后，应直接作为进程参数传入，不要拼接成 shell 字符串。仓库名和固定路径先按 stage 的约束校验。对空格、引号或 shell 元字符等仍合法的目录名，只提供数组并标记 `stage-argv-only`；简单路径另给含带引号占位符的 `stage_command` 模板。模板需要复核并替换占位符后才可执行。普通 Git 目录和 linked worktree 的 gitdir/commondir 可只读提取远端标记；不会启动 Git 或执行配置 includes。
 
 Codex 的 `skill_md_reads` 和 `load-signal` 是兼容旧版的名称：它们只表示工具参数中的语法路径引用，引用示例代码、审计文本或失败命令也可能命中。`skill_signal_basis` 明确标识该来源。不能据此证明文件已读取、技能已执行或任务已通过；真实任务缺口仍需带来源的结果与验收记录。
+
+## 保留决定，也保留重新评审的条件
+
+重复遇到候选时，先核对此前决定对应的源码、任务合同、宿主和工具版本，以及证据当时适用的范围。仅版本号更新不能自动推翻拒绝；环境或验收要求变化后，旧测试也不能直接证明当前可用。见[决策历史指南](decision-history.md)与[合成记录示例](../examples/decision-history.example.json)。它们是人工记录约定，没有新的 CLI 输入、后台服务或自动安装权限。

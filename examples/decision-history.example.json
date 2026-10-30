@@ -1,0 +1,87 @@
+{
+  "example_only": true,
+  "record_format": "manual-decision-note-v1",
+  "cli_input": false,
+  "automatic_mutation": false,
+  "records": [
+    {
+      "decision_id": "fixture-defer-001",
+      "supersedes": null,
+      "reviewed_at": "2026-01-01",
+      "candidate": {
+        "repository": "example/skills",
+        "commit": "1111111111111111111111111111111111111111",
+        "path": "skills/example-skill",
+        "local_patch_digest": null
+      },
+      "scope": {
+        "task_contract": "fixture-task-v1",
+        "host": "fixture-host",
+        "host_version": "fixture-v1",
+        "tools": [
+          "fixture-tool-v1"
+        ],
+        "model_version": null
+      },
+      "evidence": [
+        {
+          "ref": "fixture-probe-v1",
+          "status": "not-run",
+          "task_outcome": null
+        }
+      ],
+      "decision": "defer",
+      "reason": "No applicable task probe has run.",
+      "protected_constraints": [
+        "Keep existing authorization scope",
+        "Preserve original evidence"
+      ],
+      "reopen_when": [
+        "A relevant upstream fix is reviewed",
+        "The task contract or tool interface changes",
+        "A validated task counterexample becomes available"
+      ]
+    },
+    {
+      "decision_id": "fixture-review-002",
+      "supersedes": "fixture-defer-001",
+      "reviewed_at": "2026-02-01",
+      "candidate": {
+        "repository": "example/skills",
+        "commit": "1111111111111111111111111111111111111111",
+        "path": "skills/example-skill",
+        "local_patch_digest": null
+      },
+      "scope": {
+        "task_contract": "fixture-task-v1",
+        "host": "fixture-host",
+        "host_version": "fixture-v1",
+        "tools": [
+          "fixture-tool-v2"
+        ],
+        "model_version": null
+      },
+      "evidence": [
+        {
+          "ref": "fixture-probe-v1",
+          "status": "not-run",
+          "task_outcome": null
+        },
+        {
+          "ref": "fixture-interface-change",
+          "status": "synthetic-scenario",
+          "task_outcome": null
+        }
+      ],
+      "decision": "review-required",
+      "reason": "Tool interface changed; the original deferral remains historical and a current probe is required.",
+      "protected_constraints": [
+        "Keep existing authorization scope",
+        "Preserve original evidence"
+      ],
+      "reopen_when": [
+        "A current authorized task probe is available"
+      ]
+    }
+  ]
+}
