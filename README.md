@@ -117,3 +117,5 @@ flowchart LR
 [本周信号解释与研究补充](research/weekly-2026-10-23.md)：工具参数中的技能路径引用不等于实际读取；保留旧字段，并显式标注信号来源。
 
 [v0.2.1 决策历史与重新评审](docs/decision-history.md)：附人工记录示例，保留旧决定的适用条件；[本周研究与证据](research/weekly-2026-10-30.md)。
+
+[v0.3.0 按时间观察](docs/observation-windows.md)：Codex/Claude 观察支持可选时区时间范围；累计 token 不作为区间成本。见[本周补充](research/weekly-2026-11-06.md)。

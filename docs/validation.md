@@ -98,3 +98,16 @@ engine or a model-task experiment. No runtime algorithm, dependency, schema or
 global skill was changed. Native hooks, macOS and model-task benefits remain
 unverified. The [dated supplement](../research/weekly-2026-10-30.md) records the
 bounded local sample, source decisions and research reading scope.
+
+## v0.3.0 observation-window validation — 2026-11-06
+
+Local Windows/Python 3.12.8 ran 97 tests: 95 passed, two platform skips
+(POSIX execute bits and unavailable symlink privilege). Seven added methods
+exercise both host parsers, including actual CLI routing and output rejection.
+The pre-existing 90-test suite remains covered.
+
+Public examples are synthetic. A separately selected private Skill Loom interval
+contains 781 structural records; host completions are not accepted task outcomes.
+Filtered records do not provide interval token cost. Native hooks, native Claude
+execution, macOS and model-task effects remain unverified. See the
+[dated supplement](../research/weekly-2026-11-06.md) for sources and scope.

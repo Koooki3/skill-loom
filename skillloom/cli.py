@@ -47,9 +47,13 @@ def parser():
     p.add_argument("--out", required=True)
     p = sub.add_parser("observe-codex", help="Aggregate explicitly selected local rollouts; export no text")
     p.add_argument("--log", action="append", required=True)
+    p.add_argument("--since", help="Exclusive aware timestamp; requires Z or +/-HH:MM")
+    p.add_argument("--until", help="Inclusive aware timestamp; requires Z or +/-HH:MM")
     p.add_argument("--out", required=True)
     p = sub.add_parser("observe-claude", help="Aggregate explicitly selected Claude Code transcripts; export no text")
     p.add_argument("--log", action="append", required=True)
+    p.add_argument("--since", help="Exclusive aware timestamp; requires Z or +/-HH:MM")
+    p.add_argument("--until", help="Inclusive aware timestamp; requires Z or +/-HH:MM")
     p.add_argument("--out", required=True)
     p = sub.add_parser("usage", help="Per-host skill usage from host inventories and observation reports; proposes review only")
     p.add_argument("--inventory", action="append", required=True, metavar="HOST=REPORT")
@@ -143,10 +147,10 @@ def dispatch(args):
         result = summarize_events(args.input)
     elif command == "observe-codex":
         from .evidence import observe_codex
-        result = observe_codex(args.log)
+        result = observe_codex(args.log, since=args.since, until=args.until)
     elif command == "observe-claude":
         from .evidence import observe_claude
-        result = observe_claude(args.log)
+        result = observe_claude(args.log, since=args.since, until=args.until)
     elif command == "usage":
         from .usage import usage_report
         result = usage_report(host_reports(args.inventory), [read_json(p) for p in args.observation],

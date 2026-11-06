@@ -1,7 +1,7 @@
 """Small, explicit event vocabulary; no prompts, output bodies, or user paths."""
 
 from collections import Counter, defaultdict
-from datetime import date
+from datetime import date, datetime, timezone
 import json
 from pathlib import Path
 import re
@@ -53,6 +53,61 @@ SKILL_REF = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*(?::[a-z0-9]+(?:-[a-z0-9]+)*)?"
 AGENT_TYPE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,39}")
 
 
+def _timestamp(stamp):
+    """Parse the same bounded, aware timestamp syntax on Python 3.10 and newer."""
+    if not isinstance(stamp, str) or not re.fullmatch(
+            r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})", stamp):
+        return None
+    try:
+        return datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(timezone.utc)
+    except (ValueError, OverflowError):
+        return None
+
+
+class _RecordSelection:
+    """Optional temporal selection, separate from host interpretation and outcomes."""
+    def __init__(self, since, until):
+        self.active = since is not None or until is not None
+        self.since, self.until = _timestamp(since), _timestamp(until)
+        if (since is not None and self.since is None) or (until is not None and self.until is None):
+            raise LoomError("Observation bounds require YYYY-MM-DDTHH:MM:SS[.ffffff]Z or an explicit +/-HH:MM offset")
+        if self.since is not None and self.until is not None and self.since >= self.until:
+            raise LoomError("Observation since must be earlier than until")
+        self.files = set()
+        self.matched = self.excluded = self.untimed = 0
+
+    def accepts(self, item, index):
+        if not self.active:
+            return True
+        stamp = _timestamp(item.get("timestamp"))
+        if stamp is None:
+            self.untimed += 1
+            return False
+        if (self.since is not None and stamp <= self.since) or (self.until is not None and stamp > self.until):
+            self.excluded += 1
+            return False
+        self.files.add(index)
+        self.matched += 1
+        return True
+
+    def day(self, stamp):
+        return _timestamp(stamp).date() if self.active else _day(stamp)
+
+    def fields(self, selected_files):
+        if not self.active:
+            return {}
+        iso = lambda value: value.isoformat().replace("+00:00", "Z") if value else None
+        return {"record_selection": {
+            "since_exclusive": iso(self.since), "until_inclusive": iso(self.until),
+            "selected_file_count": selected_files, "matching_records": self.matched,
+            "outside_window_records": self.excluded, "untimed_records_skipped": self.untimed,
+            "day_basis": "UTC", "token_totals": "not_computed_for_filtered_window",
+            "limits": "Full input scan, not a byte cursor or continuous-capture claim. "
+                      "Only timestamped JSON objects can match; malformed-line counts cover the whole scan. "
+                      "file_count includes only distinct input files with at least one matching object. "
+                      "Cumulative host token counters are not interval costs."}}
+
+
 def _day(stamp):
     """Calendar day of an ISO timestamp, or None; times of day and zones are not kept."""
     try:
@@ -87,12 +142,13 @@ def _distinct_inputs(paths):
     return unique, len(selected) - len(unique)
 
 
-def observe_codex(paths):
+def observe_codex(paths, *, since=None, until=None):
     """Read explicit rollout files; export only structural counts and token totals.
 
     Deliberately do not infer skill usage or task success from text matches.
     Never include input filenames, prompts, commands, tool outputs, or identities.
     """
+    selection = _RecordSelection(since, until)
     paths, skipped = _distinct_inputs(paths)
     counts = Counter()
     usage = []
@@ -106,13 +162,13 @@ def observe_codex(paths):
                 except json.JSONDecodeError:
                     counts["malformed_lines"] += 1
                     continue
-                if not isinstance(item, dict):
+                if not isinstance(item, dict) or not selection.accepts(item, index):
                     continue
                 payload = item.get("payload")
                 if not isinstance(payload, dict):
                     continue
                 kind = item.get("type")
-                day = _day(item.get("timestamp"))
+                day = selection.day(item.get("timestamp"))
                 if day:
                     days.add(day)
                 if kind == "response_item" and payload.get("type") in {"function_call", "custom_tool_call"}:
@@ -124,7 +180,7 @@ def observe_codex(paths):
                         read_sessions[name].add(index)
                 if kind == "event_msg" and payload.get("type") in {"task_started", "task_complete", "turn_aborted"}:
                     counts[payload["type"]] += 1
-                if kind == "event_msg" and payload.get("type") == "token_count":
+                if not selection.active and kind == "event_msg" and payload.get("type") == "token_count":
                     info = payload.get("info") or {}
                     total = info.get("total_token_usage", {}) if isinstance(info, dict) else {}
                     value = total.get("total_tokens") if isinstance(total, dict) else None
@@ -132,9 +188,9 @@ def observe_codex(paths):
                         latest = value
         if latest is not None:
             usage.append(latest)
-    return {"schema": 1, "host": "codex", "observed_at": now(), "file_count": len(paths),
+    return {"schema": 1, "host": "codex", "observed_at": now(), "file_count": len(selection.files) if selection.active else len(paths),
             "duplicate_inputs_skipped": skipped, "counting_unit": "distinct-filesystem-objects",
-            "counts": dict(counts),
+            "counts": dict(counts), **selection.fields(len(paths)),
             "reported_total_tokens_sum": sum(usage) if usage else None,
             "files_with_usage": len(usage), "skill_attribution": "not_inferred",
             "skill_signal_basis": "syntactic-tool-payload-path-reference",
@@ -147,12 +203,13 @@ def observe_codex(paths):
                       "Date endpoints describe elapsed span, not continuous capture. No raw content exported."}
 
 
-def observe_claude(paths):
+def observe_claude(paths, *, since=None, until=None):
     """Aggregate explicitly selected Claude Code transcripts into structural counts.
 
     A Skill tool call is a structured host event, so skill attribution here is exact for
     calls and says nothing about success. Prompts, tool inputs, outputs and paths are never exported.
     """
+    selection = _RecordSelection(since, until)
     paths, skipped = _distinct_inputs(paths)
     counts, agents = Counter(), Counter()
     calls, call_sessions, days = Counter(), defaultdict(set), set()
@@ -164,9 +221,9 @@ def observe_claude(paths):
                 except json.JSONDecodeError:
                     counts["malformed_lines"] += 1
                     continue
-                if not isinstance(item, dict):
+                if not isinstance(item, dict) or not selection.accepts(item, index):
                     continue
-                day = _day(item.get("timestamp"))
+                day = selection.day(item.get("timestamp"))
                 if day:
                     days.add(day)
                 message = item.get("message")
@@ -191,9 +248,9 @@ def observe_claude(paths):
                     elif block.get("name") == "Agent":
                         kind = arguments.get("subagent_type", "default")
                         agents[kind if isinstance(kind, str) and AGENT_TYPE.fullmatch(kind) else "other"] += 1
-    return {"schema": 1, "host": "claude", "observed_at": now(), "file_count": len(paths),
+    return {"schema": 1, "host": "claude", "observed_at": now(), "file_count": len(selection.files) if selection.active else len(paths),
             "duplicate_inputs_skipped": skipped, "counting_unit": "distinct-filesystem-objects",
-            "counts": dict(counts),
+            "counts": dict(counts), **selection.fields(len(paths)),
             "skill_attribution": "tool_use:Skill", "skills": _skill_table(calls, call_sessions),
             "subagent_dispatches": dict(sorted(agents.items())), "window": _window(days),
             "limits": "Structural local sample. A Skill call shows the skill was loaded, not that the task passed. "
