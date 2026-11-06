@@ -4,6 +4,19 @@
 
 No changes yet.
 
+## 0.3.0 — 2026-11-06
+
+Compatible MINOR release from v0.2.1.
+
+- Add optional --since (exclusive) / --until (inclusive) aware timestamps to both
+  observers, plus matching Python keyword arguments. Compare instants in UTC.
+- Report temporal selection counts without raw paths/content; exclude files with
+  no matching objects from filtered file_count and usage coverage.
+- Keep cumulative Codex tokens unknown in filtered mode. Preserve full-file
+  defaults, schema 1 and existing conservative cross-report aggregation.
+- Add synthetic dual-host window/CLI contracts, dated research and source review.
+  No native-hook, task-quality, token-saving or continuous-capture claim.
+
 ## 0.2.1 — 2026-10-30
 
 Documentation PATCH: make prior adoption/defer/reject decisions reusable under

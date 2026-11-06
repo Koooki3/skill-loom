@@ -39,3 +39,5 @@ The original manuscript/PDF retains its 2026-10-06 scope and results.
 [Path-signal interpretation and research supplement](weekly-2026-10-23.md) records the 23 October run, resumed on 25 October, and its quoted-path regression. Two versioned papers are added to the reference register; neither is reproduced. The original manuscript/PDF/TeX remains historical.
 
 [Decision-history supplement](weekly-2026-10-30.md) adds a manual handoff example and two primary papers (R23–R24). It records a new bounded local sample and source triage; no paper is reproduced and no runtime history service is implemented. The historical manuscript/PDF/TeX is unchanged.
+
+[Observation-window supplement](weekly-2026-11-06.md) records v0.3.0 optional temporal selection, preservation tests, a new primary paper and an author blog. The original manuscript and derived files remain historical.

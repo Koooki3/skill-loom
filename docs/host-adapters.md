@@ -334,3 +334,7 @@ python -m skillloom gate --receipt '<RECEIPT_PATH>' --profile skill-change --exp
 本项目的 `observe-claude` 只识别明确传入JSONL中的结构化Skill工具事件；`observe-codex` 的SKILL.md信号只是工具参数中的语法路径引用，不验证实际读取或使用。两个解析器不声称接受所有宿主版本的内部日志格式，也不把每个文件视为独立任务。`usage` 的跨报告策略、旧字段含义和迁移步骤见[迭代手册](evolution-playbook.md)。未建立可靠的来源成员合同前，不合并未知重叠的报告来满足停用复核门槛。
 
 本次官方Build skills页面列举用户/仓库的 `.agents/skills` 等发现位置。上文 `.codex/skills` 的52项发现结果属于2026-10-06的具体本机版本；不能拿它保证当前所有版本仍发现相同目录。本轮只静态检查既有用户目录，没有迁移目录或改写配置。需要调整发现位置时，先在目标宿主版本用实际发现接口核验，再保留原目录与回退路径。
+
+## 2026-11-06: observation selection
+
+Both offline JSONL observers accept optional [aware time bounds](observation-windows.md). This is a shared parsing interface, not a native hook integration or a claim that every host version emits the same records. Synthetic Claude fixtures are tested; native Claude execution is not newly validated. The official Codex changelog was checked for current accounting/policy changes; no host setting or dependency was changed.

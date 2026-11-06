@@ -121,3 +121,7 @@ receipt 的限制很直接：一个内容错误但哈希正确的报告仍是错
 下周又看到同一个候选，不必从头重复安装和评测。先读取上次的理由，再检查它针对的任务、工具版本和证据是否仍然适用。上游修复可能值得重新评审，但不能直接变成安装指令；旧的通过记录也不能悄悄改写成新环境的通过。
 
 新增的[指南](decision-history.md)和[合成示例](../examples/decision-history.example.json)用两条记录说明如何保留前一个决定，并把变化交给下一轮评审。它们不被 CLI 自动执行。[研究补充](../research/weekly-2026-10-30.md)列出依据、实际抽样与未验证范围；暂不新增运行服务或全局技能。
+
+## 2026-11-06: a weekly report needs a real interval
+
+The maintenance run had a cursor, but the observer only offered a whole-file report. We moved the recurring time-selection step into the tested CLI: explicit (since, until] instants, UTC comparison and visible missing timestamps. Files with no matching records contribute no review coverage, and cumulative tokens remain unknown as interval cost. [Run the synthetic examples](observation-windows.md). The [supplement](../research/weekly-2026-11-06.md) separates the local case, deterministic tests and unmeasured model effects.

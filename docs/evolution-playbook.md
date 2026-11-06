@@ -130,3 +130,7 @@ Codex 的 `skill_md_reads` 和 `load-signal` 是兼容旧版的名称：它们�
 ## 保留决定，也保留重新评审的条件
 
 重复遇到候选时，先核对此前决定对应的源码、任务合同、宿主和工具版本，以及证据当时适用的范围。仅版本号更新不能自动推翻拒绝；环境或验收要求变化后，旧测试也不能直接证明当前可用。见[决策历史指南](decision-history.md)与[合成记录示例](../examples/decision-history.example.json)。它们是人工记录约定，没有新的 CLI 输入、后台服务或自动安装权限。
+
+## 2026-11-06: select the review interval
+
+Use optional --since/--until on explicitly selected observer files; see [the complete contract and synthetic commands](observation-windows.md). Keep private old reports, bound timestamps and skipped-record counts. Advance a successful inspection cursor only after completing its intended reads; an observer filter does not manage cursors, guarantee continuous capture or authorize a mutation.

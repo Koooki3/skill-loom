@@ -20,3 +20,5 @@ If Skill Loom is available, use its inventory, source staging, plan/apply/rollba
 Delegate only a bounded independent task with clear write ownership and acceptance criteria; stay solo for short sequential work. Use task-appropriate evidence: source fidelity and reproducibility for research, tests and runtime behavior for production, content and rendered layout for documents.
 
 Stop repair loops at a stated limit, preserve unresolved failures, and report verified changes plus limitations. Never treat a hook allowing the agent to stop as proof that the task passed. Do not create background schedules or rewrite host approval settings as part of ordinary maintenance.
+
+For a periodic review with Skill Loom 0.3.0+, choose explicit observation files and optional --since/--until bounds. Read docs/observation-windows.md in the checkout for UTC, coverage and token limits. Preserve prior reports; a time filter does not establish task success or manage a maintenance cursor.

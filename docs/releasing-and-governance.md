@@ -4,7 +4,7 @@
 
 分别版本化工具版本、JSON schema、公开示例、用户私有profile、上游skill固定commit、本地适配补丁与验收任务集。工具升级不自动升级skills；模型升级不自动修改用户偏好；来源新增不自动获得写权限。
 
-当前工具版本为0.2.1，JSON采用 schema 1。第一版不提供无感迁移；不兼容的数据应明确拒绝或在新文件中转换，保留原件。发布前将新增字段的可选性、旧版读取行为、迁移方法和撤销方法写进 CHANGELOG。
+当前工具版本为0.3.0，JSON采用 schema 1。第一版不提供无感迁移；不兼容的数据应明确拒绝或在新文件中转换，保留原件。发布前将新增字段的可选性、旧版读取行为、迁移方法和撤销方法写进 CHANGELOG。
 
 ## 维护入口与责任
 
@@ -47,3 +47,7 @@ schema仍为1，新增观察元数据和使用报告策略字段是可选的；�
 ## 0.2.1 文档补丁与撤销
 
 当前补丁补齐人工决策历史、重新评审条件和研究来源，不改变 CLI 行为、schema 1 或依赖。选择 PATCH：没有新的可执行服务或宿主集成能力。手工记录示例不由 CLI 读取。需要撤销时切回 v0.2.0 源码，保留私有证据；没有全局技能事务需要回退。
+
+## 0.3.0 compatible observation capability
+
+Choose MINOR from the latest published v0.2.1: optional temporal selection is a new compatible CLI/Python capability. Schema remains 1, dependencies and no-option output behavior are unchanged. Version metadata and CITATION are 0.3.0. Preserve private reports; downgrade to v0.2.1 in a separate checkout/environment and remove the unsupported time options. No global skill transaction needs rollback.

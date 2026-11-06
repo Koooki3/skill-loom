@@ -168,3 +168,15 @@ no statistical confidence claim or inference of skill uselessness.
 | R24 [Skill-V v1](https://arxiv.org/html/2610.11781v1) | Introduction, §§3–4; Appendix A | Recheck old evidence when conditions change | Historical dependency; not reproduced |
 
 The [supplement](weekly-2026-10-30.md) explains the manual example and deferred runtime work. Neither source establishes Skill Loom efficacy or a permission boundary.
+
+## 2026-11-06 incremental reading
+
+| Register | Reading | Local implication | Boundary |
+|---|---|---|---|
+| R25 [SkillScriptBench v2](https://arxiv.org/html/2610.04008v2) | §§2.1–2.4, 3.1–3.4; Appendix D; v2 dated 9 October | Test new behavior, documented CLI and preservation separately | Constructed faults; long-horizon reliability untested; not reproduced |
+| R26 [Gao author blog](https://hellogxp.github.io/posts/runtime-observability-for-agent-skills/) | Missing telemetry, attribution, outcome and identity sections; accessed 6 November | Select records without upgrading unknown cost/quality into evidence | Living article; its experiments not independently verified |
+
+The [new supplement](weekly-2026-11-06.md) records optional time filtering and
+deferred collectors/cost inference. Versioned Python 3.10 datetime documentation
+was checked for timezone-aware comparison. No academic benchmark result is
+reported as a Skill Loom result.

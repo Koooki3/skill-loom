@@ -69,3 +69,5 @@ See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
 [Weekly signal interpretation and research supplement](research/weekly-2026-10-23.md): a skill path in a tool payload does not verify a file read. Legacy fields remain compatible and the signal basis is explicit.
 
 [v0.2.1 decision history and reconsideration](docs/decision-history.md): a manual example preserves the conditions behind prior decisions. See the [dated research and evidence](research/weekly-2026-10-30.md).
+
+[v0.3.0 observation windows](docs/observation-windows.md): optional aware time bounds for both observers, without treating cumulative tokens as interval costs. See the [weekly supplement](research/weekly-2026-11-06.md).

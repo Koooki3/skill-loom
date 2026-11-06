@@ -169,3 +169,7 @@ Receipt绑定已实现：CLI提供可选 `--expected-run-id`、`--expected-candi
 可以声明：项目提供确定性技能维护的基础CLI、用户profile与环境初筛、Codex/Claude官方适配说明，以及跨宿主/模型验收的设计契约；本机已有Codex安装与技能发现证据。
 
 不能声明：已兼容所有harness/模型、已完成Claude本机端到端验收、已自动探测所有工具、已运行完整contract tests、已部署持续自更新服务，或模型升级后无需复测。最新实现和验收结果应以主流程的测试报告为准；本文中的设计项只有获得对应证据后才转为已实现/已验证。
+
+## 0.3.0 observation compatibility
+
+The observers add optional keyword-only since/until arguments and CLI --since/--until. No-option behavior is preserved. Filtered mode adds record_selection, uses UTC days and counts only input files with matching timestamped objects. Cumulative Codex token totals remain unknown in this mode. See [syntax, boundaries, downgrade and limitations](observation-windows.md). These parser tests do not establish native host or model-task compatibility.
